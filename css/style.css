@@ -1,0 +1,43 @@
+.main {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+
+.img {
+	width: 14em;
+	height: 12em;
+	margin-right: .5em;
+	margin-bottom: .5em;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.full {
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: rgba(0,0,0,0.6);
+
+}
+
+.ferme {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 9;
+}
+
+.x {
+	font-size: 80px;
+	top: 5% !important;
+	right: 5%;
+	color: white;
+	text-shadow: 2px 2px 2px;
+}
