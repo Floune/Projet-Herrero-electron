@@ -5,12 +5,15 @@ $(document).ready(function() {
 
 $('.img').on('click', function(){
 	var url = $(this).css('background-image');
-	var img = url.slice(58, 74);
+	var x = url.lastIndexOf("/");
+	console.log(x);
+	var img = url.slice(x + 1);
+	// var img = url.slice(58, 74);
 
 	console.log(img);
 
 
-	$(".full").css('background-image', 'url('+img+')')
+	$(".full").css('background-image', 'url("img/'+img);
 	$('.full').fadeIn(800);
 });
 
