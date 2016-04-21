@@ -8,8 +8,6 @@ $('.img').on('click', function(){
 	var x = url.lastIndexOf("/");
 	console.log(x);
 	var img = url.slice(x + 1);
-	// var img = url.slice(58, 74);
-
 	console.log(img);
 
 
@@ -21,5 +19,10 @@ $('.ferme').on('click', function(){
 	$('.full').fadeOut();
 });
 
+$('.v').on('click', function(){
+	$('.full').addClass('tourne');
 
 });
+
+});
+
