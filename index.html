@@ -3,10 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link rel="stylesheet" href="css/Semantic-UI-CSS-master/semantic.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div class="main">
+	<div class="main flux">
 	</div>
 
 	<aside class="full">
@@ -17,27 +18,36 @@
 	<div id="basket" class="basket_css">
 		<p class="ferme x">X</p>
 		<h4>Mon panier</h4>
+		<button id="clear">Vider le panier</button>
 		<p class="nb_article">Nombre d'articles</p>
-		<ul class="list_article">
+		<ul class="list_article flux">
 		</ul>
 	</div>
 
 	<div class="bouton_panier"><button class="grobouton">Voir le panier</button></div>
 
-<<<<<<< HEAD
+
 	<script id="template" type="x-tmpl-mustache">
-		<div class="img" style="background-image: url('{{url}}');"></div>
+		<div class="img" style="background-image: url('{{url}}');">
+		</div>
+		<div photo="{{url}}" class="ui button ajout">Ajouter au panier</div>
 	</script>
-=======
+
+	<script id="tpl_product" type="x-tmpl-mustache">
+		<section>
+		<div class="img" style="background-image: url('{{url}}');"></div>
+		<button indice="{{k}}" class="enleve">Supprimer article</button>
+		</section>
+	</script>
+
 <aside class="full">
 <!--<img class="ferme" src="img/close.png"/>-->
 <p class="ferme x">X</p>
 <button class="v">V</button>
 </aside>
->>>>>>> b659331800469193dc852fb6a6df090a2bbf2a13
 
-	<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
-	<script type="text/javascript" src="js/slider.js"></script>
-	<script type="text/javascript" src="js/cart.js"></script>
+	<script type="text/javascript">
+		require('./js/app.js')
+	</script>
 </body>
 </html>

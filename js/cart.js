@@ -1,15 +1,23 @@
-$ = require('jquery');
+let $ = require('jquery');
+let _utils = require('./utils.js');
+let genGallery = _utils.genGallery;
 let basket = {data:[]};
 
 let Qart = {
 
 	add: function(chose){
 		basket.data.push(chose);
+		QartUi.update();
 	},
 
 	remove: function(bidule){
-		let tab = basket.data;
-		gru = tab.findIndex(bidule);
+		basket.data.splice(bidule, 1);
+		QartUi.update();
+	},
+
+	clear: function(){
+		basket = {data:[]};
+		QartUi.update(); 
 	},
 
 	get: function(nodeId) {
@@ -24,30 +32,38 @@ let Qart = {
 
 let QartUi = {
 
-	update(){
-		var lon = basket.data.length;
-		for (var i = 0; i < lon; i++) {
-			var achat = basket.data[i];
-			achat = JSON.stringify(achat);
-			console.log(achat);
-			$('.list_article').append('<li>' + achat +'</li>');	
-		}
+	init(){
+		this.watchers();
+	},
 
+	update(){
+		genGallery(basket.data, '.list_article', $('#tpl_product').html());
 	},
 
 	watchers(){
-		$('.panier_ajout').on('click', function(){
+		$('body').on('click', '.ajout', function(e){
+			e.preventDefault();
+			console.log($(this).attr("photo"));
+			Qart.add({url:$(this).attr("photo")});
+		});	
 
-		});		
+		$('body').on('click', '.enleve', function(){
+			let suppr = $(this).attr('indice');
+			console.log(suppr);
+			Qart.remove(suppr);
+		});
+
+		$('.bouton_panier').on('click', function(){
+			this.update();
+			$('#basket').fadeIn();
+		}.bind(this));
+
+		$('body').on('click', '#clear', function(){
+			console.log('clear appuyé !!!!!!!!');
+			Qart.clear();
+		});
 	}
 }
 
-
-Qart.add({url:'img/IMG_0118.JPG'});
-Qart.add({url:'img/IMG_0965.JPG'});
-Qart.add({url:'img/IMG_0915.JPG'});
-Qart.add({url:'img/IMG_0726.JPG'});
-QartUi.update();
-
-console.log(basket);
+module.exports = {Qart, QartUi};
 

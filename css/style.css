@@ -1,8 +1,7 @@
-.main {
+.flux {
 	display: flex;
 	flex-wrap: wrap;
 }
-
 
 .img {
 	width: 14em;
@@ -67,6 +66,7 @@
 	width: 400px;
 	margin: auto;
 	text-align: center;
+}
 
 @keyframes rotation {
   from {
