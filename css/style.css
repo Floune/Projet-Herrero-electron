@@ -47,6 +47,7 @@
 	color: white;
 	text-shadow: 2px 2px 2px;
 }
+
 .basket_css{
 /*	display: none;*/
 	position: fixed;
@@ -66,4 +67,18 @@
 	width: 400px;
 	margin: auto;
 	text-align: center;
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+
+.tourne {
+	font-size: 80px;
+	z-index: 8;
+	animation: rotation 3s;
 }
