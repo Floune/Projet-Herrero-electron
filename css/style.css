@@ -67,6 +67,7 @@
 	width: 400px;
 	margin: auto;
 	text-align: center;
+}
 
 @keyframes rotation {
   from {
@@ -80,5 +81,5 @@
 .tourne {
 	font-size: 80px;
 	z-index: 8;
-	animation: rotation 3s;
+	animation: rotation 1s;
 }

@@ -5,10 +5,14 @@ Mustache.parse(template);
 
 $(document).ready(function() {
 
-<<<<<<< HEAD
+
 //on cache la div plein écran
 $(".full").hide();
 
+$('.v').on('click', function(){
+	$('.full').addClass('tourne');
+
+});
 let Galerie = {
 
 	cache(){
@@ -17,23 +21,15 @@ let Galerie = {
 			$('#basket').fadeOut();
 	},
 
-	affiche(tof){
-		//On récupère l'attr. css bckgrd img du thumbnail et on l'applique à la div full qu'on affiche		
-			var url = tof;
-			var x = url.lastIndexOf("/");
-			var img = url.slice(x + 1);
-			$(".full").css('background-image', 'url("img/'+img);
-			$('.full').fadeIn(800);	
+	// affiche(tof){
+	// 	//On récupère l'attr. css bckgrd img du thumbnail et on l'applique à la div full qu'on affiche		
+	// 		var url = tof;
+	// 		var x = url.lastIndexOf("/");
+	// 		var img = url.slice(x + 1);
+	// 		$(".full").css('background-image', 'url("img/'+img);
+	// 		$('.full').fadeIn(800);	
 	}
 }
-=======
-$('.img').on('click', function(){
-	var url = $(this).css('background-image');
-	var x = url.lastIndexOf("/");
-	console.log(x);
-	var img = url.slice(x + 1);
-	console.log(img);
->>>>>>> b659331800469193dc852fb6a6df090a2bbf2a13
 
 
 $('.img').on('click', function(){
@@ -44,7 +40,7 @@ $('.ferme').on('click', function(){
 	Galerie.cache();
 });
 
-<<<<<<< HEAD
+
 $('.bouton_panier').on('click', function(){
 	$('#basket').fadeIn();
 });
@@ -84,12 +80,7 @@ function genGallery(data, node){
 }
 
 genGallery(gallery, '.main');
-=======
-$('.v').on('click', function(){
-	$('.full').addClass('tourne');
 
-});
 
-});
 
->>>>>>> b659331800469193dc852fb6a6df090a2bbf2a13
+
