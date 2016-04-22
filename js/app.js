@@ -7,11 +7,8 @@ let Galerie = require('./slider.js');
 
 function test(){
 
-	Qart.add({url:'img/IMG_0118.JPG'});
-	Qart.add({url:'img/IMG_0965.JPG'});
-	Qart.add({url:'img/IMG_0915.JPG'});
-	Qart.add({url:'img/IMG_0726.JPG'});
-	QartUi.update();
+	// Qart.add('bonjour hayates');
+	// QartUi.update();
 }
 
 function main(){

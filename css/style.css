@@ -1,7 +1,11 @@
 body{
 	margin: 0;
-
 }
+
+.cachou {
+	display:none;
+}
+
 .flux {
 	display: flex;
 	flex-wrap: wrap;

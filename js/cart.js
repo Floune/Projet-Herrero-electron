@@ -5,9 +5,15 @@ let basket = {data:[]};
 
 let Qart = {
 
+	alerte: function(){
+		$('.cachou').fadeIn(2000);
+		$('.cachou').fadeOut(2000);
+	},
+
 	add: function(chose){
 		basket.data.push(chose);
 		QartUi.update();
+		Qart.alerte();
 	},
 
 	remove: function(bidule){
@@ -30,48 +36,56 @@ let Qart = {
 	},
 
 	envoi: function() {
-		$.post("http://192.168.1.16/phpHerrero/", basket, function(data){
-			console.log(data);
-		});
+		let tiens = JSON.stringify(basket);
+		$.ajax ({
+			url: "http://192.168.1.16/phpHerrero/server.php",
+			dataType: "text",
+			data: {'tiens':tiens},
+			type: "POST",
+			success: function(data){
+				console.log(data);
+			}
+		})
+		Qart.clear();
 	}
 }
 
-let QartUi = {
+	let QartUi = {
 
-	init(){
-		this.watchers();
-	},
+		init(){
+			this.watchers();
+		},
 
-	update(){
-		genGallery(basket.data, '.list_article', $('#tpl_product').html());
-		$('.nb_article').html(basket.data.length);
-	},
+		update(){
+			genGallery(basket.data, '.list_article', $('#tpl_product').html());
+			$('.nb_article').html(basket.data.length);
+		},
 
-	watchers(){
-		$('body').on('click', '.ajout', function(e){
-			e.preventDefault();
-			Qart.add({url:$(this).attr("photo")});
-		});	
+		watchers(){
+			$('body').on('click', '.ajout', function(e){
+				e.preventDefault();
+				Qart.add({url:$(this).attr("photo")});
+			});	
 
-		$('body').on('click', '.enleve', function(){
-			let suppr = $(this).attr('indice');
-			Qart.remove(suppr);
-		});
+			$('body').on('click', '.enleve', function(){
+				let suppr = $(this).attr('indice');
+				Qart.remove(suppr);
+			});
 
-		$('.bouton_panier').on('click', function(){
-			this.update();
-			$('#basket').fadeIn();
-		}.bind(this));
+			$('.bouton_panier').on('click', function(){
+				this.update();
+				$('#basket').fadeIn();
+			}.bind(this));
 
-		$('body').on('click', '#clear', function(){
-			Qart.clear();
-		});
+			$('body').on('click', '#clear', function(){
+				Qart.clear();
+			});
 
-		$('body').on('click', '.finaliser', function(){
-			Qart.envoi();
-		});
+			$('body').on('click', '.finaliser', function(){
+				Qart.envoi();
+			});
+		}
 	}
-}
 
-module.exports = {Qart, QartUi};
+	module.exports = {Qart, QartUi};
 
