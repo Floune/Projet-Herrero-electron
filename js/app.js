@@ -11,7 +11,6 @@ function test(){
 	Qart.add({url:'img/IMG_0965.JPG'});
 	Qart.add({url:'img/IMG_0915.JPG'});
 	Qart.add({url:'img/IMG_0726.JPG'});
-	console.log(Qart.get());
 	QartUi.update();
 }
 

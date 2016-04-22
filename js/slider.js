@@ -17,7 +17,8 @@ let Galerie = {
 	},
 
 	cache(){
-		//Fermer la photo plein écran		
+		//Fermer la photo plein écran
+		$('.full').removeClass('tourne');		
 		$('.full').fadeOut();
 		$('#basket').fadeOut();
 	},

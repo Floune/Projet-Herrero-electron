@@ -5,49 +5,60 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="css/Semantic-UI-CSS-master/semantic.min.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/Semantic-UI-CSS-master/components/icon.min.css">
 </head>
 <body>
-	<div class="main flux">
+<div class="ui button finaliser">Envoyer ma commande</div>
+	<button class="ui button labeled icon bouton_panier"><i class="add to cart icon"></i>Mon gros panier</button>
+
+
+	<div class="ui cards main flux">
 	</div>
 
-	<aside class="full">
+<!-- 	<aside class="full">
 		<p class="ferme x">X</p>
-		<button class="panier_ajout">Ajouter au panier</button>
+	
 	</aside>
-
-	<div id="basket" class="basket_css">
-		<p class="ferme x">X</p>
-		<h4>Mon panier</h4>
-		<button id="clear">Vider le panier</button>
-		<p class="nb_article">Nombre d'articles</p>
-		<ul class="list_article flux">
-		</ul>
+-->
+<div id="basket" class="basket_css" style="display: none;">
+	<p class="ferme x">x</p>
+	<h4>Mon panier</h4>
+	<button id="clear">Vider le panier</button>
+	<p>Nombre d'articles :</p> <p  class="nb_article"></p>
+	<div class="ui cards list_article flux">
 	</div>
+	<div class="ui button finaliser">Envoyer ma commande</div>
+</div>
 
-	<div class="bouton_panier"><button class="grobouton">Voir le panier</button></div>
 
 
-	<script id="template" type="x-tmpl-mustache">
-		<div class="img" style="background-image: url('{{url}}');">
+<script id="template" type="x-tmpl-mustache">
+	<div class="ui card">
+		<div class="image">
+			<img class="img image" src="{{url}}" style="background-image: url('{{url}}');">
 		</div>
-		<div photo="{{url}}" class="ui button ajout">Ajouter au panier</div>
-	</script>
+		<div photo="{{url}}" class="ui button ajout"><i class="add to card icon"></i>Ajouter au panier</div>
+	</div>
+</script>
 
-	<script id="tpl_product" type="x-tmpl-mustache">
-		<section>
-		<div class="img" style="background-image: url('{{url}}');"></div>
-		<button indice="{{k}}" class="enleve">Supprimer article</button>
-		</section>
-	</script>
+<script id="tpl_product" type="x-tmpl-mustache">
+	<section>
+		<div class="ui card">
+			<div class="image">
+				<img class="img image" src="{{url}}" style="background-image: url('{{url}}');">
+			</div>
+			<div indice="{{k}}" class="ui button enleve">Supprimer article</div>
+		</div>
+	</section>
+</script>
 
 <aside class="full">
-<!--<img class="ferme" src="img/close.png"/>-->
-<p class="ferme x">X</p>
-<button class="v">V</button>
+	<p class="ferme x">X</p>
+	<button class="v">V</button>
 </aside>
 
-	<script type="text/javascript">
-		require('./js/app.js')
-	</script>
+<script type="text/javascript">
+	require('./js/app.js')
+</script>
 </body>
 </html>

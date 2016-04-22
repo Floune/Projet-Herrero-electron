@@ -27,6 +27,12 @@ let Qart = {
 			return basket.data[nodeId];
 		}
 		return basket.data;
+	},
+
+	envoi: function() {
+		$.post("http://192.168.1.16/phpHerrero/", basket, function(data){
+			console.log(data);
+		});
 	}
 }
 
@@ -38,18 +44,17 @@ let QartUi = {
 
 	update(){
 		genGallery(basket.data, '.list_article', $('#tpl_product').html());
+		$('.nb_article').html(basket.data.length);
 	},
 
 	watchers(){
 		$('body').on('click', '.ajout', function(e){
 			e.preventDefault();
-			console.log($(this).attr("photo"));
 			Qart.add({url:$(this).attr("photo")});
 		});	
 
 		$('body').on('click', '.enleve', function(){
 			let suppr = $(this).attr('indice');
-			console.log(suppr);
 			Qart.remove(suppr);
 		});
 
@@ -59,8 +64,11 @@ let QartUi = {
 		}.bind(this));
 
 		$('body').on('click', '#clear', function(){
-			console.log('clear appuyé !!!!!!!!');
 			Qart.clear();
+		});
+
+		$('body').on('click', '.finaliser', function(){
+			Qart.envoi();
 		});
 	}
 }
