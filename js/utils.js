@@ -15,7 +15,6 @@ let genGallery = function (data, node, tpl){
 	}
 };
 
-
 module.exports = {
 	genGallery
 }

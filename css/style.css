@@ -2,10 +2,6 @@ body{
 	margin: 0;
 }
 
-.cachou {
-	display:none;
-}
-
 .flux {
 	display: flex;
 	flex-wrap: wrap;
@@ -31,7 +27,29 @@ body{
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-color: rgba(0,0,0,0.6);
+}
 
+.overlaid {
+	text-align: center;
+	z-index: 40;
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: black;
+}
+
+.titre_debut {
+	color: white;
+	font-size: 30px;
+}
+
+.demarrer.demarrer.demarrer.demarrer.demarrer {
+	margin-top: 25%;
 }
 
 .ferme {
@@ -40,12 +58,6 @@ body{
 	right: 0;
 	z-index: 9;
 }
-
-/*.panier_ajout {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-}*/
 
 .x {
 	font-size: 80px;
@@ -100,5 +112,5 @@ body{
 }
 
 .finaliser.finaliser.finaliser.finaliser.finaliser {
-	margin-top: 20px;
+	margin-top: 60px;
 }
