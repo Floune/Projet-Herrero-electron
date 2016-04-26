@@ -68,8 +68,6 @@ body{
 }
 
 .basket_css{
-	border: 2px solid black;
-	border-radius: 2px;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -113,4 +111,20 @@ body{
 
 .finaliser.finaliser.finaliser.finaliser.finaliser {
 	margin-top: 60px;
+}
+
+.last_step {
+	z-index: 50;
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 100vh;
+	width: 100vw;
+	text-align: center;
+	border-radius: solid white 2px;
+	background-color: #CFD8DC;
 }

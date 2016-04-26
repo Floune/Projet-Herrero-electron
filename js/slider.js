@@ -20,6 +20,7 @@ let Galerie = {
 		//Fermer la photo plein écran
 		$('.full').removeClass('tourne');		
 		$('.full').fadeOut();
+		$('.last_step').hide();
 		$('#basket').fadeOut();
 	},
 

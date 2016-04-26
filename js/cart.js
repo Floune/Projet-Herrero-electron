@@ -2,13 +2,14 @@ let $ = require('jquery');
 let _utils = require('./utils.js');
 let genGallery = _utils.genGallery;
 let basket = {data:[]};
+let identifiant = "";
 let noty = require('noty');
 let timeoutID;
 
 let Qart = {
 
 	retouraudebut: function() {
-		timeoutID = window.setTimeout(Qart.again, 20000);
+		timeoutID = window.setTimeout(Qart.again, 10000);
 	},
 
 	add: function(chose){
@@ -23,8 +24,8 @@ let Qart = {
         		close: {height: 'toggle'}, // jQuery animate function property object
         		easing: 'swing', // easing
         		speed: 1000 // opening & closing animation speed
-    		}
-		});
+        	}
+        });
 	},
 
 	remove: function(bidule){
@@ -39,12 +40,13 @@ let Qart = {
         		close: {height: 'toggle'}, // jQuery animate function property object
         		easing: 'swing', // easing
         		speed: 1000 // opening & closing animation speed
-    		}
-		});
+        	}
+        });
 	},
 
 	clear: function(){
 		basket = {data:[]};
+		$('.last_step').hide();
 		QartUi.update(); 
 	},
 
@@ -58,12 +60,27 @@ let Qart = {
 	},
 
 	envoi: function() {
-		if (basket.data.length != 0) {
+		identifiant = $('.name').val();
+		console.log(identifiant);
+		if (basket.data.length === 0) {
+			noty({
+				killer: true,
+				text: 'Votre panier est vide !',
+				timeout: true,
+				animation: {
+        		open: {height: 'toggle'}, // jQuery animate function property object
+        		close: {height: 'toggle'}, // jQuery animate function property object
+        		easing: 'swing', // easing
+        		speed: 1000 // opening & closing animation speed
+        	}
+        });
+			return;
+		}
 		let tiens = JSON.stringify(basket);
 		$.ajax ({
-			url: "http://192.168.1.16/phpHerrero/server.php",
+			url: "http://192.168.1.16/phpHerrero/index.php",
 			dataType: "text",
-			data: {'tiens':tiens},
+			data: {'tiens':tiens, 'identifiant':identifiant},
 			type: "POST",
 			success: function(data){
 				console.log(data);
@@ -71,23 +88,11 @@ let Qart = {
 		});
 		Qart.clear();
 		noty({
-			text: 'Commande validée, retour à l\'accueil dans 20 secondes',
+			text: 'Commande validée, retour à l\'accueil dans 10 secondes',
 			killer: true
 		});
 		Qart.retouraudebut();
-		}else{
-			noty({
-			killer: true,
-			text: 'Votre panier est vide !',
-			timeout: true,
-			animation: {
-        		open: {height: 'toggle'}, // jQuery animate function property object
-        		close: {height: 'toggle'}, // jQuery animate function property object
-        		easing: 'swing', // easing
-        		speed: 1000 // opening & closing animation speed
-    		}
-		});
-		}
+
 	},
 
 	startu: function(){
@@ -96,7 +101,12 @@ let Qart = {
 
 	again: function(){
 		$('#basket').hide();
+		$('.last_step').hide();
 		$('.overlaid').show();
+	},
+
+	fin: function(){
+		$('.last_step').show();
 	}
 }
 
@@ -130,18 +140,21 @@ let QartUi = {
 		$('body').on('click', '#clear', function(){
 			Qart.clear();
 		});
-
-		$('body').on('click', '.finaliser', function(){
+		console.log($('#nom'));
+		$('#nom').on('submit', function(){
+			alert('coucou');
 			Qart.envoi();
 		});
 
 		$('body').on('click', '.demarrer', function(){
 			Qart.startu();
 		});
+
+		$('body').on('click', '.form_envoi', function(){
+			Qart.fin();
+		});
 	}
 }
-
-
 
 module.exports = {Qart, QartUi};
 
