@@ -61,11 +61,10 @@ let Qart = {
 
 	envoi: function() {
 		identifiant = $('.name').val();
-		console.log(identifiant);
-		if (basket.data.length === 0) {
+		if (basket.data.length === 0 || identifiant === "") {
 			noty({
 				killer: true,
-				text: 'Votre panier est vide !',
+				text: 'Veuillez vous assurer que votre panier n\'est pas vide et que vous avez renseigné votre nom',
 				timeout: true,
 				animation: {
         		open: {height: 'toggle'}, // jQuery animate function property object
@@ -96,7 +95,7 @@ let Qart = {
 	},
 
 	startu: function(){
-		$('.overlaid').fadeOut(700);
+		$('.overlaid').hide();
 	},
 
 	again: function(){
@@ -134,15 +133,15 @@ let QartUi = {
 
 		$('.bouton_panier').on('click', function(){
 			this.update();
-			$('#basket').fadeIn();
+			$('#basket').show();
 		}.bind(this));
 
 		$('body').on('click', '#clear', function(){
 			Qart.clear();
 		});
-		console.log($('#nom'));
-		$('#nom').on('submit', function(){
-			alert('coucou');
+
+		$('#nom').on('submit', function(e){
+			e.preventDefault();
 			Qart.envoi();
 		});
 

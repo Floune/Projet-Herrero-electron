@@ -19,9 +19,9 @@ let Galerie = {
 	cache(){
 		//Fermer la photo plein écran
 		$('.full').removeClass('tourne');		
-		$('.full').fadeOut();
+		$('.full').hide();
 		$('.last_step').hide();
-		$('#basket').fadeOut();
+		$('#basket').hide();
 	},
 
 	affiche(tof){
@@ -30,7 +30,7 @@ let Galerie = {
 		var x = url.lastIndexOf("/");
 		var img = url.slice(x + 1);
 		$(".full").css('background-image', 'url("img/'+img);
-		$('.full').fadeIn(800);	
+		$('.full').show();	
 	},
 
 	watchers(){
