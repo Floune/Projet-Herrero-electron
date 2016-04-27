@@ -5,10 +5,6 @@ let Qart = Cart.Qart;
 let Galerie = require('./slider.js');
 
 
-function test(){
-
-}
-
 function main(){
 	Galerie.init();
 	QartUi.init();
