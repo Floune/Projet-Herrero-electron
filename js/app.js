@@ -7,8 +7,6 @@ let Galerie = require('./slider.js');
 
 function test(){
 
-	// Qart.add('bonjour hayates');
-	// QartUi.update();
 }
 
 function main(){

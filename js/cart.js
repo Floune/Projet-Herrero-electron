@@ -6,6 +6,7 @@ let identifiant = "";
 let noty = require('noty');
 let timeoutID;
 
+//objet cart
 let Qart = {
 
 	retouraudebut: function() {
@@ -20,10 +21,10 @@ let Qart = {
 			text: 'Votre article a été ajouté',
 			timeout: true,
 			animation: {
-        		open: {height: 'toggle'}, // jQuery animate function property object
-        		close: {height: 'toggle'}, // jQuery animate function property object
-        		easing: 'swing', // easing
-        		speed: 1000 // opening & closing animation speed
+        		open: {height: 'toggle'}, 
+        		close: {height: 'toggle'}, 
+        		easing: 'swing',
+        		speed: 1000 
         	}
         });
 	},
@@ -36,10 +37,10 @@ let Qart = {
 			text: 'Article supprimé !',
 			timeout: true,
 			animation: {
-        		open: {height: 'toggle'}, // jQuery animate function property object
-        		close: {height: 'toggle'}, // jQuery animate function property object
-        		easing: 'swing', // easing
-        		speed: 1000 // opening & closing animation speed
+        		open: {height: 'toggle'},
+        		close: {height: 'toggle'},
+        		easing: 'swing', 
+        		speed: 1000 
         	}
         });
 	},
@@ -67,19 +68,19 @@ let Qart = {
 				text: 'Veuillez vous assurer que votre panier n\'est pas vide et que vous avez renseigné votre nom',
 				timeout: true,
 				animation: {
-        		open: {height: 'toggle'}, // jQuery animate function property object
-        		close: {height: 'toggle'}, // jQuery animate function property object
-        		easing: 'swing', // easing
-        		speed: 1000 // opening & closing animation speed
+        		open: {height: 'toggle'}, 
+        		close: {height: 'toggle'}, 
+        		easing: 'swing', 
+        		speed: 1000 
         	}
         });
 			return;
 		}
 		let tiens = JSON.stringify(basket);
 		$.ajax ({
-			url: "http://192.168.1.16/phpHerrero/index.php",
+			url: "http://192.168.1.14/phpHerrero/index.php",
 			dataType: "text",
-			data: {'tiens':tiens, 'identifiant':identifiant},
+			data: {'tiens':tiens, 'identifiant':identifiant}, //envoi du panier au serveur php
 			type: "POST",
 			success: function(data){
 				console.log(data);

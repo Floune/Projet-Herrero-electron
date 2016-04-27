@@ -26,51 +26,57 @@
 		<button id="clear" class="ui red button">Vider le panier</button>
 		<div class="ui green button form_envoi">Valider la commande</div>
 		<p>Nombre d'articles :</p> <p  class="nb_article"></p>
-		<div class="ui cards list_article flux">
+		<div class="ui cards list_article flux">e
 		</div>
 
 		<div class="last_step">
 			<p class="ferme x">X</p>
-			<form class="ui small form" method="post" id="nom">
-				<div class="three wide field">
-					<label>Entrez votre nom</label>
-					<input type="text" class="name" placeholder="Nom....">
+			<div class="ui centered grid">
+				<div class="column center aligned six wide">
+					<form class="ui form" method="post" id="nom">
+						<div class="field">
+							<label>Entrer un nom. 
+								Ce nom permettra d'identifier votre commande, retenez-le bien ! </label>
+								<input type="text" class="name" placeholder="Nom....">
+							</div>
+							<button class="ui massive green button finaliser" type="submit">Envoyer ma commande</button>
+						</form>	
+					</div>
 				</div>
-				<button class="ui massive green button finaliser" type="submit">Envoyer ma commande</button>
-			</form>	
-		</div>
-		
-	</div>
-
-
-
-	<script id="template" type="x-tmpl-mustache">
-		<div class="ui card">
-			<div class="image">
-				<img class="img image" src="{{url}}" style="background-image: url('{{url}}');">
 			</div>
-			<div photo="{{url}}" class="ui button ajout"><i class="add to card icon"></i>Ajouter au panier</div>
-		</div>
-	</script>
 
-	<script id="tpl_product" type="x-tmpl-mustache">
-		<section>
+		</div>
+
+<div class="gru"></div>
+
+
+		<script id="template" type="x-tmpl-mustache">
 			<div class="ui card">
 				<div class="image">
 					<img class="img image" src="{{url}}" style="background-image: url('{{url}}');">
 				</div>
-				<div indice="{{k}}" class="ui button enleve">Supprimer article</div>
+				<div photo="{{url}}" class="ui button ajout"><i class="add to card icon"></i>Ajouter au panier</div>
 			</div>
-		</section>
-	</script>
+		</script>
 
-	<aside class="full">
-		<p class="ferme x">X</p>
-		<button class="v">V</button>
-	</aside>
+		<script id="tpl_product" type="x-tmpl-mustache">
+			<section>
+				<div class="ui card">
+					<div class="image">
+						<img class="img image" src="{{url}}" style="background-image: url('{{url}}');">
+					</div>
+					<div indice="{{k}}" class="ui button enleve">Supprimer article</div>
+				</div>
+			</section>
+		</script>
 
-	<script type="text/javascript">
-		require('./js/app.js')
-	</script>
-</body>
-</html>
+		<aside class="full">
+			<p class="ferme x">X</p>
+			<button class="v">V</button>
+		</aside>
+
+		<script type="text/javascript">
+			require('./js/app.js')
+		</script>
+	</body>
+	</html>

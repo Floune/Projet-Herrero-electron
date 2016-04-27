@@ -79,6 +79,7 @@ body{
 	text-align: center;
 	border-radius: solid white 2px;
 	background-color: #CFD8DC;
+	overflow: scroll;
 }
 
 .bouton_panier {
@@ -114,6 +115,7 @@ body{
 }
 
 .last_step {
+	padding-top: 100px;
 	z-index: 50;
 	display: none;
 	position: fixed;

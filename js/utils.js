@@ -15,6 +15,16 @@ let genGallery = function (data, node, tpl){
 	}
 };
 
+$.ajax ({
+	url: "http://192.168.1.24/phpHerrero/index.php/photos",
+	dataType: "text",
+	type: "POST",
+	success: function(data){
+		console.log(data);
+	}
+});
+
+
 module.exports = {
 	genGallery
 }
