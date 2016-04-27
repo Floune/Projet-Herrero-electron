@@ -2,6 +2,7 @@ let Mustache  =require('mustache');
 let $  =require('jquery');
 var template = $('#template').html();
 Mustache.parse(template);
+let adresses = [];
 
 let genGallery = function (data, node, tpl){
 	tpl = tpl || template;
@@ -15,16 +16,10 @@ let genGallery = function (data, node, tpl){
 	}
 };
 
-$.ajax ({
-	url: "http://192.168.1.24/phpHerrero/index.php/photos",
-	dataType: "text",
-	type: "POST",
-	success: function(data){
-		console.log(data);
-	}
-});
-
 
 module.exports = {
 	genGallery
 }
+
+
+

@@ -89,7 +89,14 @@ let Qart = {
 		Qart.clear();
 		noty({
 			text: 'Commande validée, retour à l\'accueil dans 10 secondes',
-			killer: true
+			killer: true,
+			timeout: true,
+			animation: {
+				open: {heigth: 'toogle'},
+				close: {heigth: 'toggle'},
+				easing: 'swing',
+				speed: 2000,
+			}
 		});
 		Qart.retouraudebut();
 

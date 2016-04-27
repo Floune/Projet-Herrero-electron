@@ -1,22 +1,12 @@
-module.exports = [
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0118.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0201.JPG'},
-{url:'img/IMG_0726.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0965.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0117.JPG'},
-{url:'img/IMG_0915.JPG'},];
+let $ = require('jquery');
+module.exports = function(cb){
+
+$.ajax ({
+	url: "http://192.168.1.14/phpHerrero/index.php/photos",
+	dataType: "json",
+	type: "get",
+	success: function(data){
+		cb(data);
+	}
+});
+};

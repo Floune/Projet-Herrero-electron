@@ -13,7 +13,9 @@ let Galerie = {
 	init(){
 		this.watchers();
 		this.cache();
-		genGallery(gallery, '.main');
+		gallery(function(data){
+			genGallery(data, '.main');
+		});
 	},
 
 	cache(){
