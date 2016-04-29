@@ -8,7 +8,6 @@ let Galerie = require('./slider.js');
 function main(){
 	Galerie.init();
 	QartUi.init();
-	test();
 }
 
 main();

@@ -8,27 +8,22 @@
 	<link rel="stylesheet" href="css/Semantic-UI-CSS-master/components/icon.min.css">
 </head>
 <body>
-
 	<div class="overlaid">
 		<h1 class="titre_debut">Bienvenue dans la boutique de David Herrero, artiste photographe</h1>
 		<button class="massive ui inverted white button demarrer">Démarrer</button>
 	</div>
-
-	<button class="ui button labeled icon bouton_panier"><i class="add to cart icon"></i>Mon gros panier</button>
-
-
 	<div class="ui cards main flux">
 	</div>
-
 	<div id="basket" class="basket_css" style="display: none;">
 		<p class="ferme x">x</p>
-		<h1>Mon panier</h1>
-		<button id="clear" class="ui red button">Vider le panier</button>
-		<div class="ui green button form_envoi">Valider la commande</div>
-		<p>Nombre d'articles :</p> <p  class="nb_article"></p>
-		<div class="ui cards list_article flux">e
+		<div class="container_infos_panier">
+			<h1>Panier</h1>
+			<div class="ligne">Nombre d'articles :</div> <div  class="nb_article"></div>
+			<button id="clear" class="ui red button">Vider le panier</button>
+			<div class="ui green button form_envoi">Valider la commande</div>
 		</div>
-
+		<div class="ui cards list_article flux">
+		</div>
 		<div class="last_step">
 			<p class="ferme x">X</p>
 			<div class="ui centered grid">
@@ -44,13 +39,10 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
-
-<div class="gru"></div>
-
-
+		<div class="gru"></div>
 		<script id="template" type="x-tmpl-mustache">
+			<button class="ui button labeled icon bouton_panier"><i class="add to cart icon"></i>Panier</button>
 			<div class="ui card">
 				<div class="image">
 					<img class="img image" src="{{url}}" style="background-image: url('{{url}}');">
@@ -58,7 +50,6 @@
 				<div photo="{{url}}" class="ui button ajout"><i class="add to card icon"></i>Ajouter au panier</div>
 			</div>
 		</script>
-
 		<script id="tpl_product" type="x-tmpl-mustache">
 			<section>
 				<div class="ui card">
@@ -69,12 +60,11 @@
 				</div>
 			</section>
 		</script>
-
+		
 		<aside class="full">
 			<p class="ferme x">X</p>
 			<button class="v">V</button>
 		</aside>
-
 		<script type="text/javascript">
 			require('./js/app.js')
 		</script>

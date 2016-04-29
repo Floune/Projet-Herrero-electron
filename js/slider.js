@@ -28,10 +28,11 @@ let Galerie = {
 
 	affiche(tof){
 		//On récupère l'attr. css bckgrd img du thumbnail et on l'applique à la div full qu'on affiche		
-		var url = tof;
-		var x = url.lastIndexOf("/");
-		var img = url.slice(x + 1);
-		$(".full").css('background-image', 'url("img/'+img);
+		// var url = tof;
+		// var x = url.lastIndexOf("/");
+		// var img = url.slice(x + 1);
+		console.log(tof);
+		$(".full").css('background-image', tof);
 		$('.full').show();	
 	},
 
