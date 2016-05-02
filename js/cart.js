@@ -78,7 +78,7 @@ let Qart = {
 		}
 		let tiens = JSON.stringify(basket);
 		$.ajax ({
-			url: "http://192.168.1.17/phpHerrero/index.php",
+			url: "http://192.168.1.61/phpHerrero/index.php",
 			dataType: "text",
 			data: {'tiens':tiens, 'identifiant':identifiant}, //envoi du panier au serveur php
 			type: "POST",

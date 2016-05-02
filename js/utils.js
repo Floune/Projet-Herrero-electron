@@ -5,6 +5,7 @@ Mustache.parse(template);
 let adresses = [];
 
 let genGallery = function (data, node, tpl){
+	console.log('generation galerie');
 	tpl = tpl || template;
 	data = data || [];
 	let len = data.length;
