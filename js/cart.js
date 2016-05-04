@@ -16,39 +16,20 @@ let Qart = {
 	add: function(chose){
 		basket.data.push(chose);
 		QartUi.update();
-		noty({
-			killer: true,
-			text: 'Votre article a été ajouté',
-			timeout: true,
-			animation: {
-        		open: {height: 'toggle'}, 
-        		close: {height: 'toggle'}, 
-        		easing: 'swing',
-        		speed: 1000 
-        	}
-        });
+		flashMess.add();
 	},
 
 	remove: function(bidule){
 		basket.data.splice(bidule, 1);
 		QartUi.update();
-		noty({
-			killer: true,
-			text: 'Article supprimé !',
-			timeout: true,
-			animation: {
-        		open: {height: 'toggle'},
-        		close: {height: 'toggle'},
-        		easing: 'swing', 
-        		speed: 1000 
-        	}
-        });
+		flashMess.remove();
 	},
 
 	clear: function(){
 		basket = {data:[]};
 		$('.last_step').hide();
 		QartUi.update(); 
+		flashMess.clear();
 	},
 
 	get: function(nodeId) {
@@ -63,22 +44,12 @@ let Qart = {
 	envoi: function() {
 		identifiant = $('.name').val();
 		if (basket.data.length === 0 || identifiant === "") {
-			noty({
-				killer: true,
-				text: 'Veuillez vous assurer que votre panier n\'est pas vide et que vous avez renseigné votre nom',
-				timeout: true,
-				animation: {
-        		open: {height: 'toggle'}, 
-        		close: {height: 'toggle'}, 
-        		easing: 'swing', 
-        		speed: 1000 
-        	}
-        });
+			flashMess.send();
 			return;
 		}
 		let tiens = JSON.stringify(basket);
 		$.ajax ({
-			url: "http://192.168.1.61/phpHerrero/index.php",
+			url: "http://192.168.1.24/simplon/serverHerrero/index.php",
 			dataType: "text",
 			data: {'tiens':tiens, 'identifiant':identifiant}, //envoi du panier au serveur php
 			type: "POST",
@@ -87,17 +58,6 @@ let Qart = {
 			}
 		});
 		Qart.clear();
-		noty({
-			text: 'Commande validée, retour à l\'accueil dans 10 secondes',
-			killer: true,
-			timeout: true,
-			animation: {
-				open: {heigth: 'toogle'},
-				close: {heigth: 'toggle'},
-				easing: 'swing',
-				speed: 2000,
-			}
-		});
 		Qart.retouraudebut();
 
 	},
@@ -160,6 +120,38 @@ let QartUi = {
 		$('body').on('click', '.form_envoi', function(){
 			Qart.fin();
 		});
+	}
+}
+
+let flashMess = {
+
+	add: function(mess) {
+		$('.message').show();
+		$('.message').html("<div class='ui floating message'>Photo ajoutée au panier</div>");
+		flashMess.hide();
+	}, 
+
+
+	remove: function(mess) {
+		$('.message').show();
+		$('.message').html("<div class='ui success message'>Photo retirée du panier</div>");
+		flashMess.hide();
+	},
+
+	clear: function(mess) {
+		$('.message').show();
+		$('.message').html("<div class='ui success message'>Panier vidé</div>");
+		flashMess.hide();
+	},
+
+	send: function(mess) {
+		$('.message').show();
+		$('.message').html("<div class='ui success message'>Veuillez vous assurer que votre panier n\'est pas vide et que vous avez renseigné votre nom</div>");
+		flashMess.hide();
+	},
+
+	hide: function() {
+		setTimeout(function(){$(".message").hide();}, 2500);
 	}
 }
 

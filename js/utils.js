@@ -12,7 +12,7 @@ let genGallery = function (data, node, tpl){
 	$(node).html('');
 	for (let i=0; i<len; i++) {
 		data[i].k = i;
-		var rendered = Mustache.render(tpl, data[i])
+		var rendered = Mustache.render(tpl, data[i]);
 		$(node).append(rendered);
 	}
 };

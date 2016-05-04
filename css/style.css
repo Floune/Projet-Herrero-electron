@@ -91,12 +91,12 @@ body{
 }
 
 @keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(90deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(90deg);
+	}
 }
 
 .tourne {
@@ -133,20 +133,35 @@ body{
 
 /*.nb_article {
 	display: inline-block;
-}*/
+	}*/
 
-.ligne {
-	display: inline-block;
-}
+	.ligne {
+		display: inline-block;
+	}
 
-.container_infos_panier {
-	background-color: #F5F5F5;
-	width: 50%;
-	height: 138px;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 20px;
-	margin-bottom: 50px;
-	border: 1px solid black;
-	border-radius: 2px;
-}
+	.container_infos_panier {
+		background-color: #F5F5F5;
+		width: 50%;
+		height: 138px;
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: 20px;
+		margin-bottom: 50px;
+		border: 1px solid black;
+		border-radius: 2px;
+	}
+
+	.message.message.message.message {
+
+		z-index: 99;
+		width: 200px;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		align-items: flex-start;
+		align-content: flex-start;
+		position: absolute;
+		margin-top: -20px;
+		left: 3;
+	}
