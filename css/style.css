@@ -84,7 +84,6 @@ body{
 
 .bouton_panier {
 	text-align: center;
-	z-index: 1;
 	position: fixed !important;
 	top: 0;
 	right: 0;
@@ -137,18 +136,6 @@ body{
 	display: inline-block;
 }
 
-.container_infos_panier {
-	background-color: #F5F5F5;
-	width: 50%;
-	height: 138px;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 20px;
-	margin-bottom: 50px;
-	border: 1px solid black;
-	border-radius: 2px;
-}
-
 .message.message.message.message {
 
 	z-index: 99;
@@ -165,7 +152,11 @@ body{
 }
 
 .espace_panier.espace_panier.espace_panier {
-	margin-bottom: 20px;
+	width: 23%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20px;
+	margin-bottom: 50px;
 }
 
 .ecran_fin {
