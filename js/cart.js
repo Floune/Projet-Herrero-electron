@@ -176,6 +176,12 @@ let QartUi = {
 			clearTimeout(t);
 			Qart.again();
 		});
+
+		$('body').on('click', '.bouton_reinit', function(){
+			Qart.clear();
+			$('.ecran_fin').show();
+			Qart.retouraudebut();
+		});
 	}
 }
 

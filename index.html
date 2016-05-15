@@ -46,7 +46,7 @@
 		<div class="ui cards list_article flux">
 		</div>
 
-
+		
 
 		<div class="last_step">
 			<p class="ferme x">X</p>
@@ -59,6 +59,8 @@
 		</div>
 	</div>
 
+	<button class="ui large grey button bouton_reinit">Recommencer</button>
+
 	<!--Div où s'affiche la photo en grand-->
 	<aside class="full">
 		<p class="ferme x">X</p>
@@ -69,13 +71,14 @@
 
 	<!--Templates mustache-->
 	<script id="template" type="x-tmpl-mustache">
-		<button class="ui button labeled icon bouton_panier"><i class="add to cart icon"></i>Panier</button>
+		<button class="ui large grey button labeled icon bouton_panier"><i class="add to cart icon"></i>Panier</button>
 		<div class="ui card">
 			<div class="image">
 				<div class="left floated header">
 					<input type="checkbox" value="isItOrNot" disabled="disabled">
 					<input type="hidden" value="false" id="chequeboxe" />
 				</div>
+
 				<img class="img image" src="{{url}}" style="background-image: url('{{url}}');">
 			</div>
 			<div class="extra content">

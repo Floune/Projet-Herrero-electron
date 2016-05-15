@@ -44,6 +44,7 @@ let Galerie = {
 			foo = par[2];
 			bar = $(foo).children().children();
 			oo = bar[0];
+			console.log(oo);
 			Galerie.affiche($(oo).css('background-image'));
 		});
 		$('body').on('click','.ferme', function(){

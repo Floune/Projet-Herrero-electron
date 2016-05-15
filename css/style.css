@@ -59,6 +59,13 @@ body{
 	z-index: 9;
 }
 
+.bouton_reinit {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 9;
+}
+
 .x {
 	font-size: 80px;
 	top: 5% !important;
@@ -107,6 +114,7 @@ body{
 .main.main.main.main{
 	margin-top: 50px;
 	z-index: -1;
+	margin-left: 20px;
 }
 
 .finaliser.finaliser.finaliser.finaliser.finaliser {
