@@ -7,8 +7,9 @@ let noty = require('noty');
 let timeoutID;
 let far;
 let boo;
+let bar;
 let unicId;
-let identifiants = ['tutu','pointes','ballet','béjar','simplon','ballerine','Le lac des cygnes','l\'oiseau de feu','bolero']
+let identifiants = ['Pointes','Giselle','Don quichotte','Tutu','Tango','Swing','Salsa','Menuet','Sarabande','Java','Ballet','Béjar','Coppélia','SimplonMIP','Ballerine','Lac des cygnes','Noureev','Arabesque','Mazurka','Petit rat','Valse','Guillem','Onéguine','Carmen','Bolero']
 let longueur = identifiants.length;
 
 
@@ -84,6 +85,7 @@ let Qart = {
 		let arbitraire = getRandomInt(1, 100);
 		let choix = getRandomInt(1, longueur);
 		unicId = identifiants[choix];
+		unicId += " ";
 		unicId += arbitraire;
 		return unicId;
 	},
@@ -123,16 +125,27 @@ let QartUi = {
 		$('.nb_article').html(basket.data.length);
 	},
 
+	seekCB(parent){
+		boo = parent[2];
+		bar = $(boo).children();
+		foo = bar[0];
+		len = $(foo).children(); //On va chercher la checkbox de la carte cliquée(un peu moche)
+		sek = len[0];
+		set = $(sek).children();
+		return set;
+	},
+
 	watchers(){
 		$('body').on('click', '.ajout', function(e){
 			e.preventDefault();
 			far = ($(this).parents());
-			boo = far[1];
-			$(boo).children('.verif').html("Photo ajoutée");
+			QartUi.seekCB(far);
+			$(set).prop('checked',true);
 			Qart.add({url:$(this).attr("photo")});
 		});	
 
 		$('body').on('click', '.enleve', function(){
+			far = ($(this).parents());
 			let suppr = $(this).attr('indice');
 			Qart.remove(suppr);
 		});
@@ -197,7 +210,6 @@ let flashMess = {
 		setTimeout(function(){$(".message").hide();}, 2500);
 	}
 }
-
 
 module.exports = {Qart, QartUi};
 

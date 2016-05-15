@@ -72,14 +72,17 @@
 		<button class="ui button labeled icon bouton_panier"><i class="add to cart icon"></i>Panier</button>
 		<div class="ui card">
 			<div class="image">
+				<div class="left floated header">
+					<input type="checkbox" value="isItOrNot" disabled="disabled">
+					<input type="hidden" value="false" id="chequeboxe" />
+				</div>
 				<img class="img image" src="{{url}}" style="background-image: url('{{url}}');">
 			</div>
 			<div class="extra content">
 				<div class="ui two buttons">
-					<div photo="{{url}}" class="ui basic green button ajout"><i class="add to card icon"></i>Ajouter au panier</div>
+					<div photo="{{url}}" indice="{{k}}" class="ui basic green button ajout"><i class="add to card icon"></i>Ajouter au panier</div>
 					<div class="ui basic blue button grand">Voir en grand</div>
 				</div>
-				<span class="verif"></span>
 			</div>
 
 
