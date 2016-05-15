@@ -8,16 +8,19 @@
 	<link rel="stylesheet" href="css/Semantic-UI-CSS-master/components/icon.min.css">
 </head>
 <body>
+	<!--Page d'accueil-->
 	<div class="overlaid">
 		<h1 class="titre_debut">Bienvenue dans la boutique de David Herrero, artiste photographe</h1>
 		<button class="massive ui inverted white button demarrer">Démarrer</button>
 	</div>
 
-
-
+	<!--Flash Message-->
 	<div class="message"></div>
-	<div class="ui cards main flux">
-	</div>
+
+	<!--Div où s'affiche la galerie-->
+	<div class="ui cards main flux"></div>
+
+	<!--Panier-->
 	<div id="basket" class="basket_css" style="display: none;">
 		<p class="ferme x">x</p>
 		<div class="container_infos_panier">
@@ -44,14 +47,30 @@
 				</div>
 			</div>
 		</div>
+
+		<!--Div où s'affiche la photo en grand-->
+		<aside class="full">
+			<p class="ferme x">X</p>
+			<button class="v">V</button>
+		</aside>
+
 		<div class="gru"></div>
+
+		<!--Templates mustache-->
 		<script id="template" type="x-tmpl-mustache">
 			<button class="ui button labeled icon bouton_panier"><i class="add to cart icon"></i>Panier</button>
 			<div class="ui card">
 				<div class="image">
 					<img class="img image" src="{{url}}" style="background-image: url('{{url}}');">
 				</div>
-				<div photo="{{url}}" class="ui button ajout"><i class="add to card icon"></i>Ajouter au panier</div>
+				<div class="extra content">
+					<div class="ui two buttons">
+					<div photo="{{url}}" class="ui basic green button ajout"><i class="add to card icon"></i>Ajouter au panier</div>
+						<div class="ui basic blue button grand">Voir en grand</div>
+					</div>
+				</div>
+
+		
 			</div>
 		</script>
 		<script id="tpl_product" type="x-tmpl-mustache">
@@ -65,10 +84,6 @@
 			</section>
 		</script>
 		
-		<aside class="full">
-			<p class="ferme x">X</p>
-			<button class="v">V</button>
-		</aside>
 		<script type="text/javascript">
 			require('./js/app.js')
 		</script>

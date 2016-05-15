@@ -8,23 +8,27 @@ let timeoutID;
 
 //objet cart
 let Qart = {
-
+	
+	//Renvoie à la page d'accueil apres 10 secondes
 	retouraudebut: function() {
 		timeoutID = window.setTimeout(Qart.again, 10000);
 	},
 
+	//Ajoute l'item au panier
 	add: function(chose){
 		basket.data.push(chose);
 		QartUi.update();
 		flashMess.add();
 	},
 
+	//enlève un item du panier
 	remove: function(bidule){
 		basket.data.splice(bidule, 1);
 		QartUi.update();
 		flashMess.remove();
 	},
 
+	//vide le panier
 	clear: function(){
 		basket = {data:[]};
 		$('.last_step').hide();
@@ -32,6 +36,7 @@ let Qart = {
 		flashMess.clear();
 	},
 
+	//récupère un item du panier
 	get: function(nodeId) {
 		nodeId = nodeId || false;
 		if (nodeId)
@@ -41,6 +46,7 @@ let Qart = {
 		return basket.data;
 	},
 
+	//envoie le panier au serveur php et reviens au début
 	envoi: function() {
 		identifiant = $('.name').val();
 		if (basket.data.length === 0 || identifiant === "") {
@@ -49,7 +55,7 @@ let Qart = {
 		}
 		let tiens = JSON.stringify(basket);
 		$.ajax ({
-			url: "http://192.168.1.24/simplon/serverHerrero/index.php",
+			url: "http://192.168.1.24/simplon/serverHerrero/index.php/commandes/create",
 			dataType: "text",
 			data: {'tiens':tiens, 'identifiant':identifiant}, //envoi du panier au serveur php
 			type: "POST",
@@ -62,27 +68,33 @@ let Qart = {
 
 	},
 
+	//cache l'overlay
 	startu: function(){
 		$('.overlaid').hide();
 	},
 
+	//retour au debut
 	again: function(){
 		$('#basket').hide();
 		$('.last_step').hide();
 		$('.overlaid').show();
 	},
 
+	//afiche la div de confirmation de commande
 	fin: function(){
 		$('.last_step').show();
 	}
 }
 
+
+//objet panierUI
 let QartUi = {
 
 	init(){
 		this.watchers();
 	},
 
+	//génère la galerie du panier
 	update(){
 		genGallery(basket.data, '.list_article', $('#tpl_product').html());
 		$('.nb_article').html(basket.data.length);

@@ -4,8 +4,8 @@ var template = $('#template').html();
 Mustache.parse(template);
 let adresses = [];
 
+//fonction utilisée pour générer les galerie 
 let genGallery = function (data, node, tpl){
-	console.log('generation 80');
 	tpl = tpl || template;
 	data = data || [];
 	let len = data.length;

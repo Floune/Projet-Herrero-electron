@@ -6,8 +6,12 @@ let $  =require('jquery');
 let gallery = require('./data.js');
 let _utils = require('./utils.js');
 let genGallery = _utils.genGallery;
+let par = [];
+let foo;
+let bar;
+let oo;
 
-
+//objet galerie
 let Galerie = {
 
 	init(){
@@ -18,27 +22,29 @@ let Galerie = {
 		});
 	},
 
+
+	//Fermer la photo plein écran
 	cache(){
-		//Fermer la photo plein écran
 		$('.full').removeClass('tourne');		
 		$('.full').hide();
 		$('.last_step').hide();
 		$('#basket').hide();
 	},
 
+	//affiche la photo en plein écran
 	affiche(tof){
-		//On récupère l'attr. css bckgrd img du thumbnail et on l'applique à la div full qu'on affiche		
-		// var url = tof;
-		// var x = url.lastIndexOf("/");
-		// var img = url.slice(x + 1);
 		console.log(tof);
 		$(".full").css('background-image', tof);
 		$('.full').show();	
 	},
 
 	watchers(){
-		$('body').on('click','.img', function(){
-			Galerie.affiche($(this).css('background-image'));
+		$('body').on('click','.grand', function(){
+			par = ($(this).parents());
+			foo = par[2];
+			bar = $(foo).children().children();
+			oo = bar[0];
+			Galerie.affiche($(oo).css('background-image'));
 		});
 		$('body').on('click','.ferme', function(){
 			Galerie.cache();
