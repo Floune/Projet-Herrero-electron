@@ -5,13 +5,23 @@ let basket = {data:[]};
 let identifiant = "";
 let noty = require('noty');
 let timeoutID;
+let far;
+let boo;
+let unicId;
+let identifiants = ['tutu','pointes','ballet','béjar','simplon','ballerine','Le lac des cygnes','l\'oiseau de feu','bolero']
+let longueur = identifiants.length;
+
+
+function getRandomInt(min, max) {
+	return Math.floor(Math.random() * (max - min)) + min;
+}
 
 //objet cart
 let Qart = {
 	
 	//Renvoie à la page d'accueil apres 10 secondes
 	retouraudebut: function() {
-		timeoutID = window.setTimeout(Qart.again, 10000);
+		t = window.setTimeout(Qart.again, 10000);
 	},
 
 	//Ajoute l'item au panier
@@ -48,8 +58,9 @@ let Qart = {
 
 	//envoie le panier au serveur php et reviens au début
 	envoi: function() {
-		identifiant = $('.name').val();
-		if (basket.data.length === 0 || identifiant === "") {
+		// s
+		console.log(identifiant);
+		if (basket.data.length === 0) {
 			flashMess.send();
 			return;
 		}
@@ -64,8 +75,17 @@ let Qart = {
 			}
 		});
 		Qart.clear();
+		$('.ecran_fin').show();
 		Qart.retouraudebut();
 
+	},
+
+	mdp: function() {
+		let arbitraire = getRandomInt(1, 100);
+		let choix = getRandomInt(1, longueur);
+		unicId = identifiants[choix];
+		unicId += arbitraire;
+		return unicId;
 	},
 
 	//cache l'overlay
@@ -76,13 +96,16 @@ let Qart = {
 	//retour au debut
 	again: function(){
 		$('#basket').hide();
+		$('.ecran_fin').hide();
 		$('.last_step').hide();
 		$('.overlaid').show();
 	},
 
 	//afiche la div de confirmation de commande
 	fin: function(){
+		let identifiant = Qart.mdp();
 		$('.last_step').show();
+		$('.identification').html("Voici votre identifiant de commande : " + identifiant);
 	}
 }
 
@@ -103,6 +126,9 @@ let QartUi = {
 	watchers(){
 		$('body').on('click', '.ajout', function(e){
 			e.preventDefault();
+			far = ($(this).parents());
+			boo = far[1];
+			$(boo).children('.verif').html("Photo ajoutée");
 			Qart.add({url:$(this).attr("photo")});
 		});	
 
@@ -120,7 +146,7 @@ let QartUi = {
 			Qart.clear();
 		});
 
-		$('#nom').on('submit', function(e){
+		$('body').on('click','.finaliser', function(e){
 			e.preventDefault();
 			Qart.envoi();
 		});
@@ -131,6 +157,11 @@ let QartUi = {
 
 		$('body').on('click', '.form_envoi', function(){
 			Qart.fin();
+		});
+
+		$('body').on('click', '.accueil', function(){
+			clearTimeout(t);
+			Qart.again();
 		});
 	}
 }
@@ -158,7 +189,7 @@ let flashMess = {
 
 	send: function(mess) {
 		$('.message').show();
-		$('.message').html("<div class='ui success message'>Veuillez vous assurer que votre panier n\'est pas vide et que vous avez renseigné votre nom</div>");
+		$('.message').html("<div class='ui success message'>Veuillez vous assurer que votre panier n\'est pas vide</div>");
 		flashMess.hide();
 	},
 
@@ -166,6 +197,7 @@ let flashMess = {
 		setTimeout(function(){$(".message").hide();}, 2500);
 	}
 }
+
 
 module.exports = {Qart, QartUi};
 

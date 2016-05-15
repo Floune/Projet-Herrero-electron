@@ -8,9 +8,13 @@
 	<link rel="stylesheet" href="css/Semantic-UI-CSS-master/components/icon.min.css">
 </head>
 <body>
+	
+	<!--ecran de fin-->
+	<div class="ecran_fin">
+		<button class="massive ui inverted white button accueil">Retour à l'accueil</button>
+	</div>
 	<!--Page d'accueil-->
 	<div class="overlaid">
-		<h1 class="titre_debut">Bienvenue dans la boutique de David Herrero, artiste photographe</h1>
 		<button class="massive ui inverted white button demarrer">Démarrer</button>
 	</div>
 
@@ -23,69 +27,77 @@
 	<!--Panier-->
 	<div id="basket" class="basket_css" style="display: none;">
 		<p class="ferme x">x</p>
-		<div class="container_infos_panier">
-			<h1>Panier</h1>
-			<div class="ligne">Nombre d'articles :</div> <div  class="nb_article"></div>
-			<button id="clear" class="ui red button">Vider le panier</button>
-			<div class="ui green button form_envoi">Valider la commande</div>
+		<div class="ui card espace_panier">
+			<div class="content">
+				<div class="header">
+					Panier
+				</div>
+				<div class="description">
+					<div  class="nb_article"></div> articles
+				</div>
+			</div>
+			<div class="extra content">
+				<div class="ui two buttons">
+					<button id="clear" class="ui red button">Vider le panier</button>
+					<div class="ui green button form_envoi">Valider la commande</div>
+				</div>
+			</div>
 		</div>
 		<div class="ui cards list_article flux">
 		</div>
+
+
+
 		<div class="last_step">
 			<p class="ferme x">X</p>
 			<div class="ui centered grid">
 				<div class="column center aligned six wide">
-					<form class="ui form" method="post" id="nom">
-						<div class="field">
-							<label>Entrer un nom. 
-								Ce nom permettra d'identifier votre commande, retenez-le bien ! </label>
-								<input type="text" class="name" placeholder="Nom....">
-							</div>
-							<button class="ui massive green button finaliser" type="submit">Envoyer ma commande</button>
-						</form>	
-					</div>
+					<div class="ui segment identification"></div>
+					<button class="ui massive green button finaliser" type="submit">Envoyer ma commande</button>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!--Div où s'affiche la photo en grand-->
-		<aside class="full">
-			<p class="ferme x">X</p>
-			<button class="v">V</button>
-		</aside>
+	<!--Div où s'affiche la photo en grand-->
+	<aside class="full">
+		<p class="ferme x">X</p>
+		<button class="v">V</button>
+	</aside>
 
-		<div class="gru"></div>
+	<div class="gru"></div>
 
-		<!--Templates mustache-->
-		<script id="template" type="x-tmpl-mustache">
-			<button class="ui button labeled icon bouton_panier"><i class="add to cart icon"></i>Panier</button>
+	<!--Templates mustache-->
+	<script id="template" type="x-tmpl-mustache">
+		<button class="ui button labeled icon bouton_panier"><i class="add to cart icon"></i>Panier</button>
+		<div class="ui card">
+			<div class="image">
+				<img class="img image" src="{{url}}" style="background-image: url('{{url}}');">
+			</div>
+			<div class="extra content">
+				<div class="ui two buttons">
+					<div photo="{{url}}" class="ui basic green button ajout"><i class="add to card icon"></i>Ajouter au panier</div>
+					<div class="ui basic blue button grand">Voir en grand</div>
+				</div>
+				<span class="verif"></span>
+			</div>
+
+
+		</div>
+	</script>
+	<script id="tpl_product" type="x-tmpl-mustache">
+		<section>
 			<div class="ui card">
 				<div class="image">
 					<img class="img image" src="{{url}}" style="background-image: url('{{url}}');">
 				</div>
-				<div class="extra content">
-					<div class="ui two buttons">
-					<div photo="{{url}}" class="ui basic green button ajout"><i class="add to card icon"></i>Ajouter au panier</div>
-						<div class="ui basic blue button grand">Voir en grand</div>
-					</div>
-				</div>
-
-		
+				<div indice="{{k}}" class="ui button enleve">Supprimer article</div>
 			</div>
-		</script>
-		<script id="tpl_product" type="x-tmpl-mustache">
-			<section>
-				<div class="ui card">
-					<div class="image">
-						<img class="img image" src="{{url}}" style="background-image: url('{{url}}');">
-					</div>
-					<div indice="{{k}}" class="ui button enleve">Supprimer article</div>
-				</div>
-			</section>
-		</script>
-		
-		<script type="text/javascript">
-			require('./js/app.js')
-		</script>
-	</body>
-	</html>
+		</section>
+	</script>
+
+	<script type="text/javascript">
+		require('./js/app.js')
+	</script>
+</body>
+</html>
