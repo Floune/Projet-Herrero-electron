@@ -1,4 +1,5 @@
 let $ = require('jquery');
+let toastr = require('toastr');
 let _utils = require('./utils.js');
 let genGallery = _utils.genGallery;
 let basket = {data:[]};
@@ -11,6 +12,15 @@ let bar;
 let unicId;
 let identifiants = ['Pointes','Giselle','Don quichotte','Tutu','Tango','Swing','Salsa','Menuet','Sarabande','Java','Ballet','Béjar','Coppélia','SimplonMIP','Ballerine','Lac des cygnes','Noureev','Arabesque','Mazurka','Petit rat','Valse','Guillem','Onéguine','Carmen','Bolero']
 let longueur = identifiants.length;
+let url = "http://192.168.1.61/phpHerrero/";
+let dataBasket = {};
+
+toastr.options.preventDuplicates = true;
+toastr.options.timeOut = 2000;
+toastr.options.closeDuration = 0;
+toastr.options.showMethod = 'show';
+toastr.options.hideMethod = 'hide';
+toastr.options.closeMethod = 'hide';
 
 
 function getRandomInt(min, max) {
@@ -29,14 +39,14 @@ let Qart = {
 	add: function(chose){
 		basket.data.push(chose);
 		QartUi.update();
-		flashMess.add();
+		toastr.success('Item ajouté au panier');
 	},
 
 	//enlève un item du panier
 	remove: function(bidule){
 		basket.data.splice(bidule, 1);
 		QartUi.update();
-		flashMess.remove();
+		toastr.info('Item supprimé panier');
 	},
 
 	//vide le panier
@@ -44,7 +54,7 @@ let Qart = {
 		basket = {data:[]};
 		$('.last_step').hide();
 		QartUi.update(); 
-		flashMess.clear();
+		toastr.info('Panier vidé');
 	},
 
 	//récupère un item du panier
@@ -62,12 +72,12 @@ let Qart = {
 		// s
 		console.log(identifiant);
 		if (basket.data.length === 0) {
-			flashMess.send();
+			toastr.warning('Votre panier est vide !');
 			return;
 		}
 		let tiens = JSON.stringify(basket);
 		$.ajax ({
-			url: "http://192.168.1.24/simplon/serverHerrero/index.php/commandes/create",
+			url: url + "/index.php/commandes/create",
 			dataType: "text",
 			data: {'tiens':tiens, 'identifiant':identifiant}, //envoi du panier au serveur php
 			type: "POST",
@@ -139,8 +149,8 @@ let QartUi = {
 		$('body').on('click', '.ajout', function(e){
 			e.preventDefault();
 			far = ($(this).parents());
-			QartUi.seekCB(far);
-			$(set).prop('checked',true);
+			// QartUi.seekCB(far);
+			// $(set).prop('checked',true);
 			Qart.add({url:$(this).attr("photo")});
 		});	
 
@@ -188,32 +198,48 @@ let QartUi = {
 let flashMess = {
 
 	add: function(mess) {
+		if (typeof o != "undefined") {
+			window.clearTimeout(o);
+		} 
 		$('.message').show();
-		$('.message').html("<div class='ui floating message'>Photo ajoutée au panier</div>");
-		flashMess.hide();
+		$('.message').html("<div class='ui succes message'>Photo ajoutée au panier</div>");
+		flashMess.wait();
 	}, 
 
 
 	remove: function(mess) {
+		if (typeof o != "undefined") {
+			window.clearTimeout(o);
+		} 
 		$('.message').show();
 		$('.message').html("<div class='ui success message'>Photo retirée du panier</div>");
-		flashMess.hide();
+		flashMess.wait();
 	},
 
 	clear: function(mess) {
+		if (typeof o != "undefined") {
+			window.clearTimeout(o);
+		} 
 		$('.message').show();
 		$('.message').html("<div class='ui success message'>Panier vidé</div>");
-		flashMess.hide();
+		flashMess.wait();
 	},
 
 	send: function(mess) {
+		if (typeof o != "undefined") {
+			window.clearTimeout(o);
+		} 
 		$('.message').show();
 		$('.message').html("<div class='ui success message'>Veuillez vous assurer que votre panier n\'est pas vide</div>");
-		flashMess.hide();
+		flashMess.wait();
 	},
 
-	hide: function() {
-		setTimeout(function(){$(".message").hide();}, 2500);
+	wait: function() {
+		let o = window.setTimeout(flashMess.hide, 2000);
+	},
+
+	hide: function(){
+		$('.message').hide();
 	}
 }
 
