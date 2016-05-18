@@ -6,6 +6,7 @@ let $  =require('jquery');
 let gallery = require('./data.js');
 let _utils = require('./utils.js');
 let genGallery = _utils.genGallery;
+let genParentGallery = _utils.genParentGallery;
 let par = [];
 let foo;
 let bar;
@@ -18,8 +19,9 @@ let Galerie = {
 		this.watchers();
 		this.cache();
 		gallery(function(data){
-			genGallery(data, '.main');
+			genParentGallery(data);
 		});
+
 	},
 
 

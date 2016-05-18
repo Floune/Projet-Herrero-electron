@@ -29,6 +29,7 @@
   "dependencies": {
     "jquery": "^2.2.3",
     "mustache": "^2.2.1",
-    "noty": "^2.3.8"
+    "noty": "^2.3.8",
+    "toastr": "^2.1.2"
   }
 }

@@ -2,9 +2,17 @@ let Mustache  =require('mustache');
 let $  =require('jquery');
 var template = $('#template').html();
 Mustache.parse(template);
-let adresses = [];
+let users = [];
 
-//fonction utilisée pour générer les galerie 
+
+
+let genParentGallery = function(data, node, tpl) {
+	data.map(function(gal, i){
+
+	})
+};
+
+// fonction utilisée pour générer les galerie 
 let genGallery = function (data, node, tpl){
 	tpl = tpl || template;
 	data = data || [];
@@ -19,8 +27,10 @@ let genGallery = function (data, node, tpl){
 
 
 module.exports = {
-	genGallery
+	genGallery,
+	genParentGallery
 }
+
 
 
 

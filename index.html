@@ -20,8 +20,11 @@
 		<button class="massive ui inverted white button demarrer">Démarrer</button>
 	</div>
 
+
 	<!--Flash Message-->
 	<div class="message"></div>
+
+
 
 	<!--Div où s'affiche la galerie-->
 	<div class="ui cards main flux"></div>
@@ -71,6 +74,18 @@
 
 	<div class="gru"></div>
 
+		<!--Templates mustache galerieParent-->
+	<script id="tplParent" type="x-tmpl-mustache">
+		<div class="ui card">
+			<div class="image">
+				<img class="img image" indice="{{k}}" src="{{url}}" style="background-image: url('{{url}}');">
+			</div>
+			<div class="extra content">
+					<div photo="{{url}}" class="ui basic green button ajout"><i class="add to card icon"></i>Voir la galerie</div>		
+			</div>
+		</div>
+	</script>
+
 	<!--Templates mustache galerie-->
 	<script id="template" type="x-tmpl-mustache">
 		<button class="ui large grey button labeled icon bouton_panier"><i class="add to cart icon"></i>Panier</button>
@@ -87,6 +102,8 @@
 			</div>
 		</div>
 	</script>
+
+
 	<!--template mustache panier-->
 	<script id="tpl_product" type="x-tmpl-mustache">
 		<section>

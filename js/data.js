@@ -9,13 +9,20 @@ $.ajax ({
 	dataType: "json",
 	type: "get",
 	success: function(data){
-		data.map(function(d){
-			d.url = url +  d.url;
-		})
+		console.log(data);
+		len = data.length;
+		for (i=0; i<len; i++) {
+			obj = data[i];
+			var size = (Object.keys(obj).length);
+			for (j=0; j<size; j++) {
+				data[i][j]['url'] = url + data[i][j]['url'];		
+			}
+		}
 		cb(data);
 	},
 	error: function(data){
-		console.log(data);
+		console.log('erreeeeeeeeur');
+		
 	}
 });
 };

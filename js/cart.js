@@ -79,10 +79,12 @@ let Qart = {
 		$.ajax ({
 			url: url + "/index.php/commandes/create",
 			dataType: "text",
-			data: {'tiens':tiens, 'identifiant':identifiant}, //envoi du panier au serveur php
+			data: {'tiens':tiens, 'identifiant':unicId}, //envoi du panier au serveur php
 			type: "POST",
 			success: function(data){
-				console.log(data);
+			},
+			error: function(data){
+			console.log(data);
 			}
 		});
 		Qart.clear();
