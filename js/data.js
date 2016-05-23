@@ -9,19 +9,20 @@ $.ajax ({
 	dataType: "json",
 	type: "get",
 	success: function(data){
-		console.log(data);
 		len = data.length;
-		for (i=0; i<len; i++) {
+		for (let i=0; i<len; i++) {
 			obj = data[i];
-			var size = (Object.keys(obj).length);
-			for (j=0; j<size; j++) {
-				data[i][j]['url'] = url + data[i][j]['url'];		
+			var lon = obj['img'].length;
+			for (j=0; j<lon; j++) {
+				obj['img'][j]['url'] = url + obj['img'][j]['url'];
 			}
 		}
 		cb(data);
+		// console.log(data);
 	},
 	error: function(data){
 		console.log('erreeeeeeeeur');
+		console.log(data);
 		
 	}
 });

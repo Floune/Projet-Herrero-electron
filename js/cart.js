@@ -10,12 +10,12 @@ let far;
 let boo;
 let bar;
 let unicId;
-let identifiants = ['Pointes','Giselle','Don quichotte','Tutu','Tango','Swing','Salsa','Menuet','Sarabande','Java','Ballet','Béjar','Coppélia','SimplonMIP','Ballerine','Lac des cygnes','Noureev','Arabesque','Mazurka','Petit rat','Valse','Guillem','Onéguine','Carmen','Bolero']
+let identifiants = ['Pointes','Giselle','Don quichotte','Tutu','Tango','Swing','Salsa','Menuet','Sarabande','Java','Ballet','Béjar','Coppélia','SimplonMIP','Ballerine','Lac des cygnes','Noureev','Arabesque','Mazurka','Halle aux grains','Petit rat','Valse','Guillem','Onéguine','Carmen','Bolero']
 let longueur = identifiants.length;
 let url = "http://192.168.1.61/phpHerrero/";
 let dataBasket = {};
 
-toastr.options.preventDuplicates = true;
+toastr.options.preventDuplicates = false;
 toastr.options.timeOut = 2000;
 toastr.options.closeDuration = 0;
 toastr.options.showMethod = 'show';
