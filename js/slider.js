@@ -35,7 +35,6 @@ let Galerie = {
 
 	//génère la galerie
 	genere(id){
-		console.log(this.data[id]);
 		genGallery(this.data[id]['img'], $('.main'), $('#template').html());
 	},
 
@@ -49,19 +48,14 @@ let Galerie = {
 
 	//affiche la photo en plein écran
 	affiche(tof){
-		console.log(tof);
+		
 		$(".full").css('background-image', tof);
 		$('.full').show();	
 	},
 
 	watchers(){
-		$('body').on('click','.grand', function(){
-			par = ($(this).parents());
-			foo = par[2];
-			bar = $(foo).children().children();
-			oo = bar[0];
-			console.log(oo);
-			Galerie.affiche($(oo).css('background-image'));
+		$('body').on('click','.affichage', function(){
+			Galerie.affiche($(this).css('background-image'));
 		});
 		$('body').on('click','.ferme', function(){
 			Galerie.cache();
@@ -71,7 +65,7 @@ let Galerie = {
 		});
 		$('body').on('click', '.voir', function(){
 			let indice = $(this).attr('indice');
-			console.log(indice);
+		
 			Galerie.genere(indice);
 		});
 		$('body').on('click', '.bouton_retour_parent', function(){

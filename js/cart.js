@@ -10,10 +10,11 @@ let far;
 let boo;
 let bar;
 let unicId;
-let identifiants = ['Pointes','Giselle','Don quichotte','Tutu','Tango','Swing','Salsa','Menuet','Sarabande','Java','Ballet','Béjar','Coppélia','SimplonMIP','Ballerine','Lac des cygnes','Noureev','Arabesque','Mazurka','Halle aux grains','Petit rat','Valse','Guillem','Onéguine','Carmen','Bolero']
+let identifiants = ['Pointes','Giselle','Don quichotte','','Tutu','Tango','Swing','Salsa','Menuet','Sarabande','Java','Ballet','Béjar','Coppélia','SimplonMIP','Ballerine','Lac des cygnes','Noureev','Arabesque','Mazurka','Halle aux grains','Petit rat','Valse','Guillem','Onéguine','Carmen','Bolero']
 let longueur = identifiants.length;
-let url = "http://192.168.1.61/phpHerrero/";
+let url = "http://192.168.1.34/phpHerrero/";
 let dataBasket = {};
+let prix = 0;
 
 toastr.options.preventDuplicates = false;
 toastr.options.timeOut = 2000;
@@ -36,8 +37,13 @@ let Qart = {
 	},
 
 	//Ajoute l'item au panier
-	add: function(chose){
-		basket.data.push(chose);
+	add: function(url, type){
+		
+		basket.data.push(url);
+		let i = basket.data.length - 1;
+		basket.data[i].format = type;
+		console.log(type);
+		console.log(basket);
 		QartUi.update();
 		toastr.success('Item ajouté au panier');
 	},
@@ -82,9 +88,9 @@ let Qart = {
 			data: {'tiens':tiens, 'identifiant':unicId}, //envoi du panier au serveur php
 			type: "POST",
 			success: function(data){
+			console.log(data);
 			},
 			error: function(data){
-			console.log(data);
 			}
 		});
 		Qart.clear();
@@ -134,30 +140,24 @@ let QartUi = {
 	//génère la galerie du panier
 	update(){
 		genGallery(basket.data, '.list_article', $('#tpl_product').html());
+		$('.bouton_panier').html(basket.data.length + '  Articles');
 		$('.nb_article').html(basket.data.length);
-	},
-
-	seekCB(parent){
-		boo = parent[2];
-		bar = $(boo).children();
-		foo = bar[0];
-		len = $(foo).children(); //On va chercher la checkbox de la carte cliquée(un peu moche)
-		sek = len[0];
-		set = $(sek).children();
-		return set;
 	},
 
 	watchers(){
 		$('body').on('click', '.ajout', function(e){
 			e.preventDefault();
-			far = ($(this).parents());
-			// QartUi.seekCB(far);
-			// $(set).prop('checked',true);
-			Qart.add({url:$(this).attr("photo")});
+			let format = $(this).attr('format');
+			let aj = parseInt($(this).attr('prix'));
+			prix += aj;
+			console.log(prix);
+			Qart.add({url:$(this).attr("photo")}, format);
 		});	
 
 		$('body').on('click', '.enleve', function(){
-			far = ($(this).parents());
+			let sub = parseInt($(this).attr('prix'));
+			console.log(sub);	
+			prix -= sub;
 			let suppr = $(this).attr('indice');
 			Qart.remove(suppr);
 		});

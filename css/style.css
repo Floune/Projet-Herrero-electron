@@ -2,18 +2,34 @@ body{
 	margin: 0;
 }
 
+
+h1 {
+	margin-top: 30%;
+	font-size: 45px;
+	color: white;
+}
+
+h2 {
+	font-size: 40px;
+	color: white;
+}
+
 .flux {
 	display: flex;
 	flex-wrap: wrap;
 }
 
-.img {
-	width: 14em;
-	height: 12em;
-	margin-right: .5em;
-	margin-bottom: .5em;
-	background-size: contain;
-	background-repeat: no-repeat;
+
+
+.image_parent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 300px;
+	height: 300px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	background-size: cover;
 	background-position: center center;
 }
 
@@ -49,7 +65,7 @@ body{
 }
 
 .demarrer.demarrer.demarrer.demarrer.demarrer {
-	margin-top: 25%;
+	margin-top: 15%;
 }
 
 .ferme {
@@ -59,12 +75,7 @@ body{
 	z-index: 9;
 }
 
-.bouton_reinit {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	z-index: 9;
-}
+
 
 .x {
 	font-size: 80px;
@@ -94,11 +105,6 @@ body{
 	left: 0;
 }
 
-/*.bouton_retour-parent {
-	text-align: center;
-	position: fixed !important;
-
-}*/
 
 @keyframes rotation {
 	from {
@@ -183,7 +189,7 @@ body{
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-color: black;
+	background-color: grey;
 }
 
 .accueil.accueil.accueil.accueil {
