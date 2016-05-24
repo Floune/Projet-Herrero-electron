@@ -10,9 +10,9 @@ let far;
 let boo;
 let bar;
 let unicId;
-let identifiants = ['Pointes','Giselle','Don quichotte','','Tutu','Tango','Swing','Salsa','Menuet','Sarabande','Java','Ballet','Béjar','Coppélia','SimplonMIP','Ballerine','Lac des cygnes','Noureev','Arabesque','Mazurka','Halle aux grains','Petit rat','Valse','Guillem','Onéguine','Carmen','Bolero']
+let identifiants = ['Pointes','Giselle','Hervé','Don quichotte','','Tutu','Tango','Swing','Salsa','Menuet','Sarabande','Java','Ballet','Béjar','Coppélia','SimplonMIP','Ballerine','Lac des cygnes','Noureev','Arabesque','Mazurka','Halle aux grains','Petit rat','Valse','','Guillem','Onéguine','Carmen','Bolero']
 let longueur = identifiants.length;
-let url = "http://192.168.1.34/phpHerrero/";
+let url = "http://192.168.1.61/phpHerrero/";
 let dataBasket = {};
 let prix = 0;
 

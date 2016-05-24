@@ -1,5 +1,5 @@
 let $ = require('jquery');
-let url = "http://192.168.1.34/phpHerrero/";
+let url = "http://192.168.1.61/phpHerrero/";
 module.exports = function(cb){
 
 //requete pour recevoir les photos minifiées depuis le serveur php
