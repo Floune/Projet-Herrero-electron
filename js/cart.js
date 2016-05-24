@@ -125,7 +125,7 @@ let Qart = {
 	fin: function(){
 		let identifiant = Qart.mdp();
 		$('.last_step').show();
-		$('.identification').html("Voici votre identifiant de commande : " + identifiant);
+		$('.identification').html("Notez bien votre identifiant : " + identifiant);
 	}
 }
 
