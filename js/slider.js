@@ -92,6 +92,14 @@ let Galerie = {
 			$('.overlaid').show();
 		});
 
+		// bouton pour consoleloguer ce qu'on veut
+		// $('body').on('click','.recup', function(){
+		// 	let cheminComplet = document.location.href;
+		// 	let cheminRepertoire = cheminComplet.substring(0, cheminComplet.lastIndexOf("/"));
+		// 	console.log(cheminComplet);	
+		// 	console.log(cheminRepertoire);	
+		// });
+
 	}
 }
 

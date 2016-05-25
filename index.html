@@ -43,7 +43,7 @@
 		<button class="ui large grey button bouton_retour_parent">Retour à la galerie précédente</button>
 		<button class="ui large grey button bouton_reinit">Recommencer</button>
 		<button class="ui large grey button bouton_panier">Panier</button>
-		<!--<button class="recup" type="submit">recup</button> bouton debug-->
+
 		</div>
 
 
@@ -102,7 +102,7 @@
 		<!--Templates mustache galerieParent-->
 		<script id="tplParent" type="x-tmpl-mustache">
 
-			<div class="image_parent" title="{{title}}" style="background-image: url('{{cover}}');">
+			<div class="image_parent voir" title="{{title}}" indice="{{k}}" style="background-image: url('{{cover}}');">
 				<button indice="{{k}}" class="ui large button voir">Photos de {{title}}</button>
 			</div>
 		</script>
@@ -110,20 +110,21 @@
 		<!--Templates mustache galerie-->
 		<script id="template" type="x-tmpl-mustache">
 
-			<div class="ui card">
-				<div class="image">
-					<img class="img image affichage" title="{{title}}" indice="{{k}}" src="{{url}}" style="background-image: url('{{url}}');">
-				</div>
-				<div class="ui form" method="post">
-				<div class="extra content">
-						<div class="ui two buttons">
-						
-								<div photo="{{url}}" indice="{{k}}" class="ui green button ajout" value="papier 6€" format="print" prix="6">papier 6€</div>
-								<div photo="{{url}}" indice="{{k}}" class="ui red button ajout" value="numérique 5€" format="usb" prix="5">numérique 5€</div>
-						</div>
-					</div>
-				</div>
+	
+		<div class="carte_enfant">
+			<div class="image_enfant affichage" title="{{title}}" indice="{{k}}" src="{{url}}" style="background-image: url('{{url}}');">
 			</div>
+			
+			<div class="boutons_enfant">						
+				<div class="form" method="post">
+					<div photo="{{url}}" indice="{{k}}" class="ui green button ajout" value="papier 6€" format="Format papier" prix="6">papier 6€</div>
+				</div>	
+				<div class="form" method="post">
+					<div photo="{{url}}" indice="{{k}}" class="ui red button ajout droite" value="numérique 5€" format="Format numérique" prix="5">numérique 5€</div>
+				</div>			
+			</div>
+		</div>
+	
 		</script>
 
 
@@ -134,13 +135,14 @@
 				  	<div class="content">
     					<div class="left floated meta">{{format}} : {{prix}} euros</div>
   					</div>
-					<div class="image">
-						<img class="img" src="{{url}}" style="background-image: url('{{url}}');">
+					<div class="image image_enfant" src="{{url}}" style="background-image: url('{{url}}');">
+						
 					</div>
 					<div indice="{{k}}" class="ui button enleve">Supprimer article</div>
 				</div>
 			</section>
 		</script>
+
 		<script type="text/javascript" src="js/config.js"></script>
 		<script type="text/javascript">
 			require('./js/app.js')

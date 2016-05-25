@@ -30,15 +30,41 @@ h2 {
 	margin-right: 20px;
 	margin-bottom: 20px;
 }
+.carte_enfant {
+	display: flex;
+	flex-direction: column;
+	margin-right: 18px;
+	margin-bottom: 20px;
+}
+
+.image_enfant {
+	width: 290px;
+	height: 232px;
+	background-size: cover;
+	background-position: center center;
+}
+
+.boutons_enfant {
+	display: flex;
+	flex-direction: row;
+}
+
+.ajout {
+	width: 145px;
+}
+
+.droite.droite.droite.droite.droite {
+	margin-left: -4px;
+}
 
 .image_parent {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 300px;
-	height: 300px;
-	margin-right: 10px;
-	margin-bottom: 10px;
+	width: 290px;
+	height: 260px;
+	margin-right: 18px;
+	margin-bottom: 20px;
 	background-size: cover;
 	background-position: center center;
 }

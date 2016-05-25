@@ -83,7 +83,7 @@ let Qart = {
 
 	//envoie le panier au serveur php et reviens au début
 	envoi: function() {
-		// s
+		
 		console.log(identifiant);
 		if (basket.data.length === 0) {
 			toastr.warning('Votre panier est vide !');
@@ -147,7 +147,7 @@ let QartUi = {
 	//génère la galerie du panier et les infos panier
 	update(prix_total){
 		genGallery(basket.data, '.list_article', $('#tpl_product').html());
-		$('.bouton_panier').html(basket.data.length + '  Articles');
+		$('.bouton_panier').html(basket.data.length + '  Articles | Total: ' + prix_total + '€');
 		$('.nb_article').html(basket.data.length + ' Articles');
 		$('.prix').html(prix_total + '€');
 		console.log(basket);
