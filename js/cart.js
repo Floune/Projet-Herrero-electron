@@ -1,20 +1,22 @@
 let $ = require('jquery');
 let toastr = require('toastr');
 let _utils = require('./utils.js');
+let _config = require('./config.js');
+let _galerie = require('./slider.js');
+let retourParentGallery = _galerie.retourParentGallery;
 let genGallery = _utils.genGallery;
 let basket = {data:[]};
 let identifiant = "";
-let noty = require('noty');
 let timeoutID;
 let far;
 let boo;
 let bar;
 let unicId;
-let identifiants = ['Pointes','Giselle','Hervé','Don quichotte','','Tutu','Tango','Swing','Salsa','Menuet','Sarabande','Java','Ballet','Béjar','Coppélia','SimplonMIP','Ballerine','Lac des cygnes','Noureev','Arabesque','Mazurka','Halle aux grains','Petit rat','Valse','','Guillem','Onéguine','Carmen','Bolero']
+let identifiants = ['Pointes','Giselle','Hervé','Don quichotte','Tutu','Tango','Swing','Salsa','Menuet','Sarabande','Java','Ballet','Béjar','Coppélia','SimplonMIP','Ballerine','Lac des cygnes','Noureev','Arabesque','Mazurka','Halle aux grains','Petit rat','Valse','','Guillem','Onéguine','Carmen','Bolero']
 let longueur = identifiants.length;
-let url = "http://192.168.1.61/phpHerrero/";
 let dataBasket = {};
-let prix = 0;
+let prix_total = 0;
+
 
 toastr.options.preventDuplicates = false;
 toastr.options.timeOut = 2000;
@@ -36,30 +38,36 @@ let Qart = {
 		t = window.setTimeout(Qart.again, 10000);
 	},
 
+
 	//Ajoute l'item au panier
-	add: function(url, type){
+	add: function(url, type, prix){
 		
 		basket.data.push(url);
 		let i = basket.data.length - 1;
 		basket.data[i].format = type;
-		console.log(type);
-		console.log(basket);
-		QartUi.update();
+		basket.data[i].prix = prix;
+		prix_total += prix;
+		console.log(prix_total);
+		QartUi.update(prix_total);
 		toastr.success('Item ajouté au panier');
 	},
 
 	//enlève un item du panier
 	remove: function(bidule){
+		let sub = basket.data[bidule].prix;
+		prix_total -= sub;
+		console.log(prix_total);
 		basket.data.splice(bidule, 1);
-		QartUi.update();
+		QartUi.update(prix_total);
 		toastr.info('Item supprimé panier');
 	},
 
 	//vide le panier
 	clear: function(){
 		basket = {data:[]};
+		prix_total = 0;
 		$('.last_step').hide();
-		QartUi.update(); 
+		QartUi.update(prix_total); 
 		toastr.info('Panier vidé');
 	},
 
@@ -82,6 +90,8 @@ let Qart = {
 			return;
 		}
 		let tiens = JSON.stringify(basket);
+		let config  = _config.get();
+		let url = "http://192.168.1.24/simplon/serverHerrero";
 		$.ajax ({
 			url: url + "/index.php/commandes/create",
 			dataType: "text",
@@ -108,11 +118,6 @@ let Qart = {
 		return unicId;
 	},
 
-	//cache l'overlay
-	startu: function(){
-		$('.overlaid').hide();
-	},
-
 	//retour au debut
 	again: function(){
 		$('#basket').hide();
@@ -137,33 +142,33 @@ let QartUi = {
 		this.watchers();
 	},
 
-	//génère la galerie du panier
-	update(){
+
+
+	//génère la galerie du panier et les infos panier
+	update(prix_total){
 		genGallery(basket.data, '.list_article', $('#tpl_product').html());
 		$('.bouton_panier').html(basket.data.length + '  Articles');
-		$('.nb_article').html(basket.data.length);
+		$('.nb_article').html(basket.data.length + ' Articles');
+		$('.prix').html(prix_total + '€');
+		console.log(basket);
+
 	},
 
 	watchers(){
 		$('body').on('click', '.ajout', function(e){
 			e.preventDefault();
 			let format = $(this).attr('format');
-			let aj = parseInt($(this).attr('prix'));
-			prix += aj;
-			console.log(prix);
-			Qart.add({url:$(this).attr("photo")}, format);
+			let prix = parseInt($(this).attr('prix'));
+			Qart.add({url:$(this).attr("photo")}, format, prix);
 		});	
 
 		$('body').on('click', '.enleve', function(){
-			let sub = parseInt($(this).attr('prix'));
-			console.log(sub);	
-			prix -= sub;
 			let suppr = $(this).attr('indice');
 			Qart.remove(suppr);
 		});
 
 		$('body').on('click','.bouton_panier', function(){
-			this.update();
+			this.update(prix_total);
 			$('#basket').show();
 		}.bind(this));
 
@@ -174,10 +179,6 @@ let QartUi = {
 		$('body').on('click','.finaliser', function(e){
 			e.preventDefault();
 			Qart.envoi();
-		});
-
-		$('body').on('click', '.demarrer', function(){
-			Qart.startu();
 		});
 
 		$('body').on('click', '.form_envoi', function(){

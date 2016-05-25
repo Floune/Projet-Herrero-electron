@@ -1,7 +1,11 @@
 let $ = require('jquery');
-let url = "http://192.168.1.61/phpHerrero/";
-module.exports = function(cb){
+let _config = require('./config.js');
+// let config  = _config.get();
+// let url = "http://" + config.url + "/simplon/serverHerrero/";
 
+module.exports = function(cb){
+let config  = _config.get();
+let url = "http://" + config.url + "/simplon/serverHerrero/";
 //requete pour recevoir les photos minifiées depuis le serveur php
 $.ajax ({
 	cache: false,
@@ -20,8 +24,7 @@ $.ajax ({
 		cb(data);
 	},
 	error: function(data){
-		console.log('erreeeeeeeeur');
-		console.log(data);
+		console.log('erreeeeeeeeur', data);
 		
 	}
 });

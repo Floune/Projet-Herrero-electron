@@ -4,18 +4,21 @@
 	let $  =require('jquery');
 	let gallery = require('./data.js');
 	let _utils = require('./utils.js');
+	let _config = require('./config.js');
 	let genGallery = _utils.genGallery;
 	let genParentGallery = _utils.genParentGallery;
 	let par = [];
 	let foo;
 	let bar;
 	let oo;
+	
 
 //objet galerie
 let Galerie = {
 
 
 	init(){
+
 		this.watchers();
 		this.cache();
 		//génère galerie parent
@@ -53,7 +56,17 @@ let Galerie = {
 		$('.full').show();	
 	},
 
+		//cache l'overlay
+	startu: function(){
+		$('.overlaid').hide();
+	},
+
 	watchers(){
+
+		$('body').on('click', '.demarrer', function(){
+		Galerie.startu();
+		});
+
 		$('body').on('click','.affichage', function(){
 			Galerie.affiche($(this).css('background-image'));
 		});
@@ -64,13 +77,21 @@ let Galerie = {
 			$('.full').addClass('tourne');
 		});
 		$('body').on('click', '.voir', function(){
-			let indice = $(this).attr('indice');
-		
+			let indice = $(this).attr('indice');		
 			Galerie.genere(indice);
 		});
 		$('body').on('click', '.bouton_retour_parent', function(){
 			Galerie.retourParentGallery();
 		});
+
+		$('body').on('click', '.envoi_config', function(e){
+			e.preventDefault();
+			let url = $('#config_url').val();
+			_config.set(url);
+			$('.container_config').hide();
+			$('.overlaid').show();
+		});
+
 	}
 }
 

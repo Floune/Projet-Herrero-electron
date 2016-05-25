@@ -9,12 +9,29 @@
 	<link rel="stylesheet" href="node_modules/toastr/build/toastr.min.css">
 </head>
 <body>
+
+	<div class="container_config">
+		<div class="ui centered grid grille_config">
+			<div class="seven wide column">
+			<h1>Configuration</h1>
+				<form class="ui form" id="config_form">
+					<div class="field">
+						<label>IP DU SERVEUR</label>
+						<input type="text" id="config_url">
+					</div>
+					<button class="ui button envoi_config" type="submit">Submit</button>
+					
+				</form>
+			</div>
+		</div>
+	</div>
 	
 	<!--ecran de fin-->
 	<div class="ecran_fin">
 		<button class="massive ui inverted white button accueil">Retour au début</button>
 		<h3 style="color: white;">Ou retour automatique en 10s</3>
-	</div>
+		</div>
+
 		<!--Page d'accueil-->
 		<div class="overlaid">
 			<h1 class="title">Gala de danse juin 2016</h1>
@@ -22,10 +39,12 @@
 			<button class="massive ui inverted white button demarrer">Voir les photos</button>
 		</div>
 		
-
-		<div class="ui large grey button bouton_retour_parent">Retour à la galerie précédente</div>
+		<div class="boutons_menu">
+		<button class="ui large grey button bouton_retour_parent">Retour à la galerie précédente</button>
 		<button class="ui large grey button bouton_reinit">Recommencer</button>
-		<div class="ui large grey button bouton_panier">Panier</div>
+		<button class="ui large grey button bouton_panier">Panier</button>
+		<!--<button class="recup" type="submit">recup</button> bouton debug-->
+		</div>
 
 
 		<!--Flash Message-->
@@ -44,6 +63,7 @@
 					</div>
 					<div class="description">
 						<div class="nb_article"></div>
+						<div class="prix"></div>
 					</div>
 				</div>
 				<div class="extra content">
@@ -82,9 +102,9 @@
 		<!--Templates mustache galerieParent-->
 		<script id="tplParent" type="x-tmpl-mustache">
 
-				<div class="image_parent" title="{{title}}" style="background-image: url('{{cover}}');">
-					<button indice="{{k}}" class="ui large button voir">Photos de {{title}}</button>
-				</div>
+			<div class="image_parent" title="{{title}}" style="background-image: url('{{cover}}');">
+				<button indice="{{k}}" class="ui large button voir">Photos de {{title}}</button>
+			</div>
 		</script>
 
 		<!--Templates mustache galerie-->
@@ -94,15 +114,12 @@
 				<div class="image">
 					<img class="img image affichage" title="{{title}}" indice="{{k}}" src="{{url}}" style="background-image: url('{{url}}');">
 				</div>
+				<div class="ui form" method="post">
 				<div class="extra content">
-						<div class="ui form" method="post">
-					<div class="ui two fields">
-					<div class="field">
-						<button photo="{{url}}" indice="{{k}}" class="ui green button ajout" value="papier 6€" format="print" prix="6">papier 6€</button>
-					</div>
-					<div class="field">
-							<button photo="{{url}}" indice="{{k}}" class="ui red button ajout" value="numérique 5€" format="usb" prix="5">numérique 5€</button>
-							</div>
+						<div class="ui two buttons">
+						
+								<div photo="{{url}}" indice="{{k}}" class="ui green button ajout" value="papier 6€" format="print" prix="6">papier 6€</div>
+								<div photo="{{url}}" indice="{{k}}" class="ui red button ajout" value="numérique 5€" format="usb" prix="5">numérique 5€</div>
 						</div>
 					</div>
 				</div>
@@ -113,7 +130,10 @@
 		<!--template mustache panier-->
 		<script id="tpl_product" type="x-tmpl-mustache">
 			<section>
-				<div class="ui card">
+				<div class="ui card carte_panier">
+				  	<div class="content">
+    					<div class="left floated meta">{{format}} : {{prix}} euros</div>
+  					</div>
 					<div class="image">
 						<img class="img" src="{{url}}" style="background-image: url('{{url}}');">
 					</div>
@@ -121,7 +141,7 @@
 				</div>
 			</section>
 		</script>
-
+		<script type="text/javascript" src="js/config.js"></script>
 		<script type="text/javascript">
 			require('./js/app.js')
 		</script>
