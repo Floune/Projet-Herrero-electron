@@ -22,11 +22,7 @@ let Galerie = {
 		this.watchers();
 		this.cache();
 		//génère galerie parent
-		gallery(function(data){
-			this.data = data;
-			genParentGallery(data, $('.main'), $('#tplParent').html());
-		}.bind(this));
-
+		this.retourParentGallery();
 	},
 
 	retourParentGallery() {
@@ -59,6 +55,7 @@ let Galerie = {
 		//cache l'overlay
 	startu: function(){
 		$('.overlaid').hide();
+		this.retourParentGallery();
 	},
 
 	watchers(){

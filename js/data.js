@@ -5,7 +5,7 @@ let _config = require('./config.js');
 
 module.exports = function(cb){
 let config  = _config.get();
-let url = "http://" + config.url + "/simplon/serverHerrero/";
+let url = "http://" + config.url + "/phpHerrero/";
 //requete pour recevoir les photos minifiées depuis le serveur php
 $.ajax ({
 	cache: false,

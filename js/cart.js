@@ -91,11 +91,11 @@ let Qart = {
 		}
 		let tiens = JSON.stringify(basket);
 		let config  = _config.get();
-		let url = "http://192.168.1.24/simplon/serverHerrero";
+		let url = "http://192.168.1.61/phpHerrero";
 		$.ajax ({
 			url: url + "/index.php/commandes/create",
 			dataType: "text",
-			data: {'tiens':tiens, 'identifiant':unicId}, //envoi du panier au serveur php
+			data: {'tiens':tiens, 'identifiant':unicId, 'prix':prix_total}, //envoi du panier au serveur php
 			type: "POST",
 			success: function(data){
 			console.log(data);
