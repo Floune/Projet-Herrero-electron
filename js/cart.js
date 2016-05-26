@@ -1,7 +1,6 @@
 let $ = require('jquery');
 let toastr = require('toastr');
 let _utils = require('./utils.js');
-let _config = require('./config.js');
 let _galerie = require('./slider.js');
 let retourParentGallery = _galerie.retourParentGallery;
 let genGallery = _utils.genGallery;
@@ -16,7 +15,7 @@ let identifiants = ['Pointes','Giselle','Hervé','Don quichotte','Tutu','Tango',
 let longueur = identifiants.length;
 let dataBasket = {};
 let prix_total = 0;
-let config  = _config.get();
+let url = "http://192.168.1.24/simplon/serverHerrero/";
 
 
 toastr.options.preventDuplicates = false;
@@ -25,7 +24,6 @@ toastr.options.closeDuration = 0;
 toastr.options.showMethod = 'show';
 toastr.options.hideMethod = 'hide';
 toastr.options.closeMethod = 'hide';
-
 
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
@@ -91,7 +89,6 @@ let Qart = {
 			return;
 		}
 		let tiens = JSON.stringify(basket);
-		let url = "http://" + config.url + "/phpHerrero/";
 		console.log(prix_total);
 		$.ajax ({
 			url: url + "/index.php/commandes/create",
@@ -140,8 +137,6 @@ let Qart = {
 let QartUi = {
 
 	init(){
-		let text_config = config.text;
-		$('.titre_accueil').html(text_config);
 		// $('.overlaid').css('background-image', )
 		this.watchers();
 	},
@@ -151,7 +146,7 @@ let QartUi = {
 	//génère la galerie du panier et les infos panier
 	update(prix_total){
 		genGallery(basket.data, '.list_article', $('#tpl_product').html());
-		$('.bouton_panier').html(basket.data.length + '  Articles | Total: ' + prix_total + '€');
+		$('.bouton_panier').html('<i class="in cart icon"></i> Panier </br> ' + basket.data.length + '  Articles | Total: ' + prix_total + '€');
 		$('.nb_article').html(basket.data.length + ' Articles');
 		$('.prix').html(prix_total + '€');
 		console.log(basket);

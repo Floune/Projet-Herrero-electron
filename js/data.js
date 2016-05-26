@@ -1,10 +1,8 @@
 let $ = require('jquery');
-let _config = require('./config.js');
+let url = "http://192.168.1.24/simplon/serverHerrero/";
 
 
 module.exports = function(cb){
-let config  = _config.get();
-let url = "http://" + config.url + "/phpHerrero/";
 //requete pour recevoir les photos minifiées depuis le serveur php
 $.ajax ({
 	cache: false,

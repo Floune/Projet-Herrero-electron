@@ -8,22 +8,7 @@
 	<link rel="stylesheet" href="css/Semantic-UI-CSS-master/components/icon.min.css">
 	<link rel="stylesheet" href="node_modules/toastr/build/toastr.min.css">
 </head>
-<body>
-
-	<div class="container_config">
-		<div class="ui centered grid grille_config">
-			<div class="seven wide column">
-			<h1>Configuration</h1>
-				<form class="ui form" id="config_form">
-					<div class="field">
-						<label>IP DU SERVEUR</label>
-						<input type="text" id="config_url">
-					</div>
-					<button class="ui button envoi_config" type="submit">Submit</button>
-				</form>
-			</div>
-		</div>
-	</div>
+<body> 
 	
 	<!--ecran de fin-->
 	<div class="ecran_fin">
@@ -36,9 +21,9 @@
 			<button class="massive ui inverted white button demarrer">Commencer</button>
 		</div>		
 		<div class="boutons_menu">
-		<button class="ui large grey button bouton_retour_parent">Retour à la galerie précédente</button>
-		<button class="ui large grey button bouton_reinit">Recommencer</button>
-		<button class="ui large grey button bouton_panier">Panier</button>
+		<button class="ui large grey labeled icon button bouton_retour_parent"><i class="chevron left icon"></i>Retour à la galerie précédente</button>
+		<button class="ui large red labeled icon button bouton_reinit"><i class="repeat icon"></i>Recommencer</button>
+		<button class="ui large grey labeled icon button bouton_panier"><i class="add to cart icon"></i>Panier</button>
 		</div>
 
 
@@ -112,7 +97,7 @@
 					<div photo="{{url}}" indice="{{k}}" class="ui green button ajout" value="papier 6€" format="Format papier" prix="6">papier 6€</div>
 				</div>	
 				<div class="form" method="post">
-					<div photo="{{url}}" indice="{{k}}" class="ui red button ajout droite" value="numérique 5€" format="Format numérique" prix="5">numérique 5€</div>
+					<div photo="{{url}}" indice="{{k}}" class="ui blue button ajout droite" value="numérique 5€" format="Format numérique" prix="5">numérique 5€</div>
 				</div>			
 			</div>
 		</div>
