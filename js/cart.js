@@ -91,6 +91,7 @@ let Qart = {
 		}
 		let tiens = JSON.stringify(basket);
 		let config  = _config.get();
+		console.log(prix_total);
 		let url = "http://192.168.1.61/phpHerrero";
 		$.ajax ({
 			url: url + "/index.php/commandes/create",

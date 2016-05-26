@@ -17,6 +17,8 @@ h2 {
 .flux {
 	display: flex;
 	flex-wrap: wrap;
+	width: 100vw;
+	justify-content: center;
 }
 
 .boutons_menu {
