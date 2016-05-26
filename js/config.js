@@ -6,8 +6,10 @@ let obj_config = {}
 let config = {
 
 
-	set(url) {
+	set(url, photo, texte) {
 		obj_config.url = url;
+		obj_config.photo = photo;
+		obj_config.text = texte;
 		conff = JSON.stringify(obj_config);
 		fs.writeFileSync("config.json", conff);
 	},

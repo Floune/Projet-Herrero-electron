@@ -16,6 +16,7 @@ let identifiants = ['Pointes','Giselle','Hervé','Don quichotte','Tutu','Tango',
 let longueur = identifiants.length;
 let dataBasket = {};
 let prix_total = 0;
+let config  = _config.get();
 
 
 toastr.options.preventDuplicates = false;
@@ -90,16 +91,15 @@ let Qart = {
 			return;
 		}
 		let tiens = JSON.stringify(basket);
-		let config  = _config.get();
+		let url = "http://" + config.url + "/phpHerrero/";
 		console.log(prix_total);
-		let url = "http://192.168.1.61/phpHerrero";
 		$.ajax ({
 			url: url + "/index.php/commandes/create",
 			dataType: "text",
 			data: {'tiens':tiens, 'identifiant':unicId, 'prix':prix_total}, //envoi du panier au serveur php
 			type: "POST",
 			success: function(data){
-			console.log(data);
+				console.log(data);
 			},
 			error: function(data){
 			}
@@ -140,6 +140,9 @@ let Qart = {
 let QartUi = {
 
 	init(){
+		let text_config = config.text;
+		$('.titre_accueil').html(text_config);
+		// $('.overlaid').css('background-image', )
 		this.watchers();
 	},
 
@@ -199,53 +202,53 @@ let QartUi = {
 	}
 }
 
-let flashMess = {
+// let flashMess = {
 
-	add: function(mess) {
-		if (typeof o != "undefined") {
-			window.clearTimeout(o);
-		} 
-		$('.message').show();
-		$('.message').html("<div class='ui succes message'>Photo ajoutée au panier</div>");
-		flashMess.wait();
-	}, 
+// 	add: function(mess) {
+// 		if (typeof o != "undefined") {
+// 			window.clearTimeout(o);
+// 		} 
+// 		$('.message').show();
+// 		$('.message').html("<div class='ui succes message'>Photo ajoutée au panier</div>");
+// 		flashMess.wait();
+// 	}, 
 
 
-	remove: function(mess) {
-		if (typeof o != "undefined") {
-			window.clearTimeout(o);
-		} 
-		$('.message').show();
-		$('.message').html("<div class='ui success message'>Photo retirée du panier</div>");
-		flashMess.wait();
-	},
+// 	remove: function(mess) {
+// 		if (typeof o != "undefined") {
+// 			window.clearTimeout(o);
+// 		} 
+// 		$('.message').show();
+// 		$('.message').html("<div class='ui success message'>Photo retirée du panier</div>");
+// 		flashMess.wait();
+// 	},
 
-	clear: function(mess) {
-		if (typeof o != "undefined") {
-			window.clearTimeout(o);
-		} 
-		$('.message').show();
-		$('.message').html("<div class='ui success message'>Panier vidé</div>");
-		flashMess.wait();
-	},
+// 	clear: function(mess) {
+// 		if (typeof o != "undefined") {
+// 			window.clearTimeout(o);
+// 		} 
+// 		$('.message').show();
+// 		$('.message').html("<div class='ui success message'>Panier vidé</div>");
+// 		flashMess.wait();
+// 	},
 
-	send: function(mess) {
-		if (typeof o != "undefined") {
-			window.clearTimeout(o);
-		} 
-		$('.message').show();
-		$('.message').html("<div class='ui success message'>Veuillez vous assurer que votre panier n\'est pas vide</div>");
-		flashMess.wait();
-	},
+// 	send: function(mess) {
+// 		if (typeof o != "undefined") {
+// 			window.clearTimeout(o);
+// 		} 
+// 		$('.message').show();
+// 		$('.message').html("<div class='ui success message'>Veuillez vous assurer que votre panier n\'est pas vide</div>");
+// 		flashMess.wait();
+// 	},
 
-	wait: function() {
-		let o = window.setTimeout(flashMess.hide, 2000);
-	},
+// 	wait: function() {
+// 		let o = window.setTimeout(flashMess.hide, 2000);
+// 	},
 
-	hide: function(){
-		$('.message').hide();
-	}
-}
+// 	hide: function(){
+// 		$('.message').hide();
+// 	}
+// }
 
 module.exports = {Qart, QartUi};
 

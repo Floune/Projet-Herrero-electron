@@ -5,6 +5,7 @@
 	let gallery = require('./data.js');
 	let _utils = require('./utils.js');
 	let _config = require('./config.js');
+	let config  = _config.get();
 	let genGallery = _utils.genGallery;
 	let genParentGallery = _utils.genParentGallery;
 	let par = [];
@@ -81,21 +82,12 @@ let Galerie = {
 			Galerie.retourParentGallery();
 		});
 
-		$('body').on('click', '.envoi_config', function(e){
-			e.preventDefault();
-			let url = $('#config_url').val();
-			_config.set(url);
-			$('.container_config').hide();
-			$('.overlaid').show();
-		});
 
 		// bouton pour consoleloguer ce qu'on veut
-		// $('body').on('click','.recup', function(){
-		// 	let cheminComplet = document.location.href;
-		// 	let cheminRepertoire = cheminComplet.substring(0, cheminComplet.lastIndexOf("/"));
-		// 	console.log(cheminComplet);	
-		// 	console.log(cheminRepertoire);	
-		// });
+		$('body').on('click','.recup', function(){
+
+			console.log(config);		
+		});
 
 	}
 }

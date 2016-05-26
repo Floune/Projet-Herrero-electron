@@ -1,7 +1,6 @@
 let $ = require('jquery');
 let _config = require('./config.js');
-// let config  = _config.get();
-// let url = "http://" + config.url + "/simplon/serverHerrero/";
+
 
 module.exports = function(cb){
 let config  = _config.get();
