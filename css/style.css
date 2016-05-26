@@ -91,10 +91,10 @@ h2 {
 	position: fixed;
 	top: 0;
 	left: 0;
-	background-size: contain;
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-color: black;
+	background-image: url('photo-danse.jpg');
 }
 
 .demarrer.demarrer.demarrer.demarrer.demarrer {
@@ -236,6 +236,7 @@ h2 {
 
 
 .container_config {
+	top: 0;
 	z-index: 500;
 	position: fixed;
 	display: 100vh;
