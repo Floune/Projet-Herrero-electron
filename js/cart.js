@@ -15,7 +15,7 @@ let identifiants = ['Pointes','Giselle','Hervé','Don quichotte','Tutu','Tango',
 let longueur = identifiants.length;
 let dataBasket = {};
 let prix_total = 0;
-let url = "http://192.168.1.43/phpHerrero/";
+let url = "http://192.168.1.2/phpHerrero/";
 
 
 toastr.options.preventDuplicates = false;
