@@ -146,7 +146,7 @@ let QartUi = {
 	//génère la galerie du panier et les infos panier
 	update(prix_total){
 		genGallery(basket.data, '.list_article', $('#tpl_product').html());
-		$('.bouton_panier').html('<i class="in cart icon"></i> Panier </br> ' + basket.data.length + '  Articles | Total: ' + prix_total + '€');
+		$('.bouton_panier').html('<i class="in cart icon"></i> Panier </br> ' + basket.data.length + '  Articles|Total: ' + prix_total + '€');
 		$('.nb_article').html(basket.data.length + ' Articles');
 		$('.prix').html(prix_total + '€');
 		console.log(basket);
