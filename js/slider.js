@@ -14,6 +14,7 @@
 	let oo;
 	
 
+
 //objet galerie
 let Galerie = {
 
@@ -49,38 +50,53 @@ let Galerie = {
 	//affiche la photo en plein écran
 	affiche(tof){
 		
-		$(".full").css('background-image', tof);
+		$(".image_full").css('background-image', tof);
 		$('.full').show();	
 	},
 
 		//cache l'overlay
-	startu: function(){
-		$('.overlaid').hide();
-		this.retourParentGallery();
-	},
+		startu: function(){
+			$('.overlaid').hide();
+			this.retourParentGallery();
+		},
 
-	watchers(){
+		watchers(){
 
-		$('body').on('click', '.demarrer', function(){
-		Galerie.startu();
-		});
+			$(window).scroll(function() {
+				if($(window).scrollTop() == 0){
+					$('#scrollToTop').hide();
+				} else {
+					if($('#scrollToTop').length == 0){
+						$('body').append('<div id="scrollToTop">'+
+							'<a href="#"><i class="huge chevron circle up icon"></i></a>'+
+							'</div>');
+					}
+					$('#scrollToTop').show();
+				}
+			});
 
-		$('body').on('click','.affichage', function(){
-			Galerie.affiche($(this).css('background-image'));
-		});
-		$('body').on('click','.ferme', function(){
-			Galerie.cache();
-		});
-		$('body').on('click','.v', function(){
-			$('.full').addClass('tourne');
-		});
-		$('body').on('click', '.voir', function(){
-			let indice = $(this).attr('indice');		
-			Galerie.genere(indice);
-		});
-		$('body').on('click', '.bouton_retour_parent', function(){
-			Galerie.retourParentGallery();
-		});
+			$('body').on('click', '#scrollToTop a', function(event){
+				event.preventDefault();
+				$('html,body').animate({scrollTop: 0}, 'slow');
+			});
+
+			$('body').on('click', '.demarrer', function(){
+				Galerie.startu();
+			});
+
+			$('body').on('click','.affichage', function(){
+				Galerie.affiche($(this).css('background-image'));
+			});
+			$('body').on('click','.ferme', function(){
+				Galerie.cache();
+			});
+			$('body').on('click', '.voir', function(){
+				let indice = $(this).attr('indice');		
+				Galerie.genere(indice);
+			});
+			$('body').on('click', '.bouton_retour_parent', function(){
+				Galerie.retourParentGallery();
+			});
 
 
 		// bouton pour consoleloguer ce qu'on veut

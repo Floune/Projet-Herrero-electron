@@ -22,10 +22,8 @@ h2 {
 }
 
 .boutons_menu {
-	top:0;
-	left: 0;
 	position: fixed;
-	z-index: 10;
+	z-index: 12;
 }
 
 .carte_panier.carte_panier.carte_panier.carte_panier.carte_panier {
@@ -101,148 +99,132 @@ h2 {
 	margin-top: 15%;
 }
 
-.ferme {
-	position: absolute;
-	top: 0;
-	right: 0;
-	z-index: 9;
-}
-
-.x {
+/*.x {
 	font-size: 80px;
 	top: 5% !important;
 	right: 5%;
 	color: white;
 	text-shadow: 2px 2px 2px;
-}
+	}*/
 
-.basket_css{
-	padding-left: 20px;
-	z-index: 11;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center center;
-	height: 100vh;
-	width: 100vw;
-	text-align: center;
-	border-radius: solid white 2px;
-	background-color: #E0E0E0;
-	overflow: scroll;
-}
-
-.bouton_panier {
-	top: 0;
-	left: 0;
-}
-
-
-@keyframes rotation {
-	from {
-		transform: rotate(0deg);
+	.basket_css{
+		padding-left: 20px;
+		z-index: 11;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center center;
+		height: 100vh;
+		width: 100vw;
+		text-align: center;
+		border-radius: solid white 2px;
+		background-color: #E0E0E0;
+		overflow: scroll;
 	}
-	to {
-		transform: rotate(90deg);
+
+	.bouton_panier {
+		top: 0;
+		left: 0;
 	}
-}
 
-.tourne {
-	font-size: 80px;
-	z-index: 8;
-	animation: rotation 3s;
-}
+	.main.main.main.main{
+		margin-top: 70px;
+		z-index: -1;
+		margin-left: 20px;
+	}
 
-.main.main.main.main{
-	margin-top: 70px;
-	z-index: -1;
-	margin-left: 20px;
-}
+	.finaliser.finaliser.finaliser.finaliser.finaliser {
+		margin-top: 10px;
+	}
 
-.finaliser.finaliser.finaliser.finaliser.finaliser {
-	margin-top: 10px;
-}
-
-.last_step {
-	padding-top: 100px;
-	z-index: 50;
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center center;
-	height: 100vh;
-	width: 100vw;
-	text-align: center;
-	border-radius: solid white 2px;
-	background-color: #E0E0E0;
-}
+	.last_step {
+		padding-top: 100px;
+		z-index: 50;
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center center;
+		height: 100vh;
+		width: 100vw;
+		text-align: center;
+		border-radius: solid white 2px;
+		background-color: #E0E0E0;
+	}
 
 
 
-.ligne {
-	display: inline-block;
-}
+	.ligne {
+		display: inline-block;
+	}
 
-.message.message.message.message {
+	.message.message.message.message {
 
-	z-index: 99;
-	width: 200px;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: flex-end;
-	align-items: flex-start;
-	align-content: flex-start;
-	position: absolute;
-	margin-top: -20px;
-	left: 3;
-}
+		z-index: 99;
+		width: 200px;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		align-items: flex-start;
+		align-content: flex-start;
+		position: absolute;
+		margin-top: -20px;
+		left: 3;
+	}
 
-.espace_panier.espace_panier.espace_panier {
-	width: 40%;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 60px;
-	margin-bottom: 50px;
-}
+	.espace_panier.espace_panier.espace_panier {
+		width: 40%;
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: 60px;
+		margin-bottom: 50px;
+	}
 
-.ecran_fin {
-	display: none;
-	text-align: center;
-	z-index: 40;
-	height: 100vh;
-	width: 100vw;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-color: grey;
-}
+	.ecran_fin {
+		display: none;
+		text-align: center;
+		z-index: 40;
+		height: 100vh;
+		width: 100vw;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-color: grey;
+	}
 
-.accueil.accueil.accueil.accueil {
-	margin-top: 25%;
-}
+	.accueil.accueil.accueil.accueil {
+		margin-top: 25%;
+	}
 
-.boutons {
-	display: flex;
-	flex-wrap: wrap;
-}
+	.boutons {
+		display: flex;
+		flex-wrap: wrap;
+	}
 
 
-.container_config {
-	top: 0;
-	z-index: 500;
-	position: fixed;
-	display: 100vh;
-	padding-top: 60px;
-	width: 100vw;
-	height: 100vh;
-	background-color: teal;
-}
+	.container_config {
+		top: 0;
+		z-index: 500;
+		position: fixed;
+		display: 100vh;
+		padding-top: 60px;
+		width: 100vw;
+		height: 100vh;
+		background-color: teal;
+	}
+
+	#scrollToTop a { 
+		position: fixed;
+		right: 20px; 
+		bottom: 10px; 
+	}
+
 

@@ -19,12 +19,19 @@
 		<!--Page d'accueil-->
 		<div class="overlaid">
 			<button class="massive ui inverted white button demarrer">Commencer</button>
-		</div>		
-		<div class="boutons_menu">
-		<button class="ui large grey labeled icon button bouton_retour_parent"><i class="chevron left icon"></i>Retour à la galerie précédente</button>
-		<button class="ui large red labeled icon button bouton_reinit"><i class="repeat icon"></i>Recommencer</button>
-		<button class="ui large grey labeled icon button bouton_panier"><i class="add to cart icon"></i>Panier</button>
+		</div>	
+
+		<div class="ui centered grid">
+			<div class="column center aligned six wide">
+				<div class="boutons_menu">
+					<button class="ui large blue labeled icon button bouton_retour_parent ferme"><i class="chevron left icon"></i>Retour</button>
+					<button class="ui large green labeled icon button bouton_panier"><i class="add to cart icon"></i>Panier</button>
+					<button class="ui large red labeled icon button bouton_reinit"><i class="repeat icon"></i>Recommencer</button>
+				</div>
+			</div>
 		</div>
+
+
 
 
 		<!--Flash Message-->
@@ -35,7 +42,6 @@
 
 		<!--Panier-->
 		<div id="basket" class="basket_css" style="display: none;">
-			<p class="ferme x">x</p>
 			<div class="ui card espace_panier">
 				<div class="content">
 					<div class="header">
@@ -56,7 +62,6 @@
 			<div class="ui cards list_article flux">
 			</div>
 			<div class="last_step">
-				<p class="ferme x">X</p>
 				<div class="ui centered grid">
 					<div class="column center aligned six wide">
 						<div class="ui segment identification"></div>
@@ -69,9 +74,7 @@
 		
 
 		<!--Div où s'affiche la photo en grand-->
-		<aside class="full">
-			<p class="ferme x">X</p>
-			<button class="v">V</button>
+		<aside id="full" class="full">
 		</aside>
 
 		<div class="gru"></div>
@@ -80,28 +83,28 @@
 		<script id="tplParent" type="x-tmpl-mustache">
 
 			<div class="image_parent voir" title="{{title}}" indice="{{k}}" style="background-image: url('{{cover}}');">
-				<button indice="{{k}}" class="ui large button voir">Photos de {{title}}</button>
+				<button indice="{{k}}" class="ui large button voir">{{title}}</button>
 			</div>
 		</script>
 
 		<!--Templates mustache galerie-->
 		<script id="template" type="x-tmpl-mustache">
 
-	
-		<div class="carte_enfant">
-			<div class="image_enfant affichage" title="{{title}}" indice="{{k}}" src="{{url}}" style="background-image: url('{{url}}');">
-			</div>
-			
-			<div class="boutons_enfant">						
-				<div class="form" method="post">
-					<div photo="{{url}}" indice="{{k}}" class="ui green button ajout" value="papier 6€" format="Format papier" prix="6">papier 5€</div>
-				</div>	
-				<!--<div class="form" method="post">-->
+
+			<div class="carte_enfant" id="carteEnfant">
+				<div class="image_enfant affichage" title="{{title}}" indice="{{k}}" src="{{url}}" style="background-image: url('{{url}}');">
+				</div>
+
+				<div class="boutons_enfant">						
+					<div class="form" method="post">
+						<div photo="{{url}}" indice="{{k}}" class="ui green button ajout" value="papier 6€" format="Format papier" prix="6">papier 5€</div>
+					</div>	
+					<!--<div class="form" method="post">-->
 					<!--<div photo="{{url}}" indice="{{k}}" class="ui blue button ajout droite" value="numérique 5€" format="Format numérique" prix="5">numérique 5€</div>-->
-				<!--</div>-->		
+					<!--</div>-->		
+				</div>
 			</div>
-		</div>
-	
+
 		</script>
 
 
@@ -109,9 +112,9 @@
 		<script id="tpl_product" type="x-tmpl-mustache">
 			<section>
 				<div class="ui card carte_panier">
-				  	<div class="content">
-    					<div class="left floated meta">{{format}} : {{prix}} euros</div>
-  					</div>
+					<div class="content">
+						<div class="left floated meta">{{format}} : {{prix}} euros</div>
+					</div>
 					<div class="image image_enfant" src="{{url}}" style="background-image: url('{{url}}');">
 						
 					</div>
