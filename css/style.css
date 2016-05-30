@@ -22,6 +22,8 @@ h2 {
 }
 
 .boutons_menu {
+	left: 10%;
+	top: 2px;
 	position: fixed;
 	z-index: 13;
 }
