@@ -67,7 +67,7 @@ let Galerie = {
 				} else {
 					if($('#scrollToTop').length == 0){
 						$('body').append('<div id="scrollToTop">'+
-							'<a href="#"><i class="huge chevron circle up icon"></i></a>'+
+							'<a href="#"><i class="huge chevron circle up icon icone_retour_hdp"></i></a>'+
 							'</div>');
 					}
 					$('#scrollToTop').show();
@@ -92,7 +92,10 @@ let Galerie = {
 				Galerie.genere(indice);
 			});
 			$('body').on('click', '.bouton_retour_parent', function(){
-				if ($('.full').css('display') != "none") {
+				if ($('#basket').css('display') != "none" && $('.full').css('display') != "none") {
+					$('.full').hide();
+				}
+				else if ($('.full').css('display') != "none") {
 					Galerie.cache();
 				}
 				else if ($('#basket').css('display') != "none") {

@@ -14,6 +14,10 @@ h2 {
 	color: white;
 }
 
+.icone_retour_hdp.icone_retour_hdp.icone_retour_hdp.icone_retour_hdp.icone_retour_hdp.icone_retour_hdp {
+	z-index: 20;
+}
+
 .flux {
 	display: flex;
 	flex-wrap: wrap;
@@ -212,7 +216,7 @@ h2 {
 	}
 
 
-	.container_config {
+/*	.container_config {
 		top: 0;
 		z-index: 500;
 		position: fixed;
@@ -221,11 +225,11 @@ h2 {
 		width: 100vw;
 		height: 100vh;
 		background-color: teal;
-	}
+	}*/
 
 	#scrollToTop a { 
 		position: fixed;
-		right: 20px; 
+		right: 5px; 
 		bottom: 10px; 
 	}
 
