@@ -23,7 +23,7 @@ h2 {
 
 .boutons_menu {
 	position: fixed;
-	z-index: 12;
+	z-index: 13;
 }
 
 .carte_panier.carte_panier.carte_panier.carte_panier.carte_panier {
@@ -70,6 +70,10 @@ h2 {
 }
 
 .full {
+	z-index: 12;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	height: 100vh;
 	width: 100vw;
 	position: fixed;
@@ -177,7 +181,7 @@ h2 {
 		width: 40%;
 		margin-right: auto;
 		margin-left: auto;
-		margin-top: 60px;
+		margin-top: 75px;
 		margin-bottom: 50px;
 	}
 

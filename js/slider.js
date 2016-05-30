@@ -40,8 +40,7 @@ let Galerie = {
 	},
 
 	//Fermer la photo plein écran
-	cache(){
-		$('.full').removeClass('tourne');		
+	cache(){	
 		$('.full').hide();
 		$('.last_step').hide();
 		$('#basket').hide();
@@ -49,8 +48,8 @@ let Galerie = {
 
 	//affiche la photo en plein écran
 	affiche(tof){
-		
-		$(".image_full").css('background-image', tof);
+		console.log(tof)
+		$(".full").css('background-image', tof);
 		$('.full').show();	
 	},
 
@@ -87,15 +86,21 @@ let Galerie = {
 			$('body').on('click','.affichage', function(){
 				Galerie.affiche($(this).css('background-image'));
 			});
-			$('body').on('click','.ferme', function(){
-				Galerie.cache();
-			});
+
 			$('body').on('click', '.voir', function(){
 				let indice = $(this).attr('indice');		
 				Galerie.genere(indice);
 			});
 			$('body').on('click', '.bouton_retour_parent', function(){
-				Galerie.retourParentGallery();
+				if ($('.full').css('display') != "none") {
+					Galerie.cache();
+				}
+				else if ($('#basket').css('display') != "none") {
+					Galerie.cache();
+				}
+				else {
+					Galerie.retourParentGallery();
+				}
 			});
 
 
