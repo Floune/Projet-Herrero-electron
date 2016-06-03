@@ -48,8 +48,7 @@ let Galerie = {
 
 	//affiche la photo en plein écran
 	affiche(tof){
-		console.log(tof)
-		$(".full").css('background-image', tof);
+		$(".image_full").css('background-image', tof);
 		$('.full').show();	
 	},
 
@@ -105,6 +104,7 @@ let Galerie = {
 					Galerie.retourParentGallery();
 				}
 			});
+
 
 
 		// bouton pour consoleloguer ce qu'on veut

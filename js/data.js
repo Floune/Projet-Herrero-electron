@@ -1,5 +1,5 @@
 let $ = require('jquery');
-let url = "http://192.168.1.24/simplon/serverHerrero/";
+let url = "http://192.168.1.61/phpHerrero/";
 
 
 module.exports = function(cb){

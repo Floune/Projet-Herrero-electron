@@ -26,7 +26,7 @@ h2 {
 }
 
 .boutons_menu {
-	left: 15%;
+	left: 13%;
 	top: 2px;
 	position: fixed;
 	z-index: 13;
@@ -76,6 +76,7 @@ h2 {
 }
 
 .full {
+	display: none;
 	z-index: 12;
 	display: flex;
 	justify-content: center;
@@ -89,6 +90,15 @@ h2 {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-color: rgba(0,0,0,0.6);
+}
+
+.image_full {
+	z-index: 12;
+	height: 80vh;
+	width: 80vw;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 
 .overlaid {
