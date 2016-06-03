@@ -84,6 +84,9 @@ let Galerie = {
 
 			$('body').on('click','.affichage', function(){
 				Galerie.affiche($(this).css('background-image'));
+				$('.full:not(.image_full)').one('click', function(){
+					$('.full').hide();
+				});
 			});
 
 			$('body').on('click', '.voir', function(){
@@ -107,7 +110,7 @@ let Galerie = {
 
 
 
-		// bouton pour consoleloguer ce qu'on veut
+		// bouton caché pour consoleloguer ce qu'on veut
 		$('body').on('click','.recup', function(){
 
 			console.log(config);		

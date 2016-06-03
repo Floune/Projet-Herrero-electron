@@ -146,7 +146,7 @@ let QartUi = {
 	//génère la galerie du panier et les infos panier
 	update(prix_total){
 		genGallery(basket.data, '.list_article', $('#tpl_product').html());
-		$('.bouton_panier').html('<i class="in cart icon"></i> Panier </br> ' + basket.data.length + '  Articles|Total: ' + prix_total + '€');
+		$('.bouton_panier').html('<i class="in cart icon"></i>' + basket.data.length + '  Articles| ' + prix_total + '€');
 		$('.nb_article').html(basket.data.length + ' Articles');
 		$('.prix').html(prix_total + '€');
 		console.log(basket);
@@ -197,53 +197,7 @@ let QartUi = {
 	}
 }
 
-// let flashMess = {
 
-// 	add: function(mess) {
-// 		if (typeof o != "undefined") {
-// 			window.clearTimeout(o);
-// 		} 
-// 		$('.message').show();
-// 		$('.message').html("<div class='ui succes message'>Photo ajoutée au panier</div>");
-// 		flashMess.wait();
-// 	}, 
-
-
-// 	remove: function(mess) {
-// 		if (typeof o != "undefined") {
-// 			window.clearTimeout(o);
-// 		} 
-// 		$('.message').show();
-// 		$('.message').html("<div class='ui success message'>Photo retirée du panier</div>");
-// 		flashMess.wait();
-// 	},
-
-// 	clear: function(mess) {
-// 		if (typeof o != "undefined") {
-// 			window.clearTimeout(o);
-// 		} 
-// 		$('.message').show();
-// 		$('.message').html("<div class='ui success message'>Panier vidé</div>");
-// 		flashMess.wait();
-// 	},
-
-// 	send: function(mess) {
-// 		if (typeof o != "undefined") {
-// 			window.clearTimeout(o);
-// 		} 
-// 		$('.message').show();
-// 		$('.message').html("<div class='ui success message'>Veuillez vous assurer que votre panier n\'est pas vide</div>");
-// 		flashMess.wait();
-// 	},
-
-// 	wait: function() {
-// 		let o = window.setTimeout(flashMess.hide, 2000);
-// 	},
-
-// 	hide: function(){
-// 		$('.message').hide();
-// 	}
-// }
 
 module.exports = {Qart, QartUi};
 
